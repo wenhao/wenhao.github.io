@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/6 | 源代码</title>
+  <title>about | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="源代码">
-<meta property="og:url" content="http://wenhao.github.io/archives/2015/06/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://wenhao.github.io/about/index.html">
 <meta property="og:site_name" content="源代码">
 <meta property="og:description">
+<meta property="og:updated_time" content="2015-06-08T04:43:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="源代码">
+<meta name="twitter:title" content="about">
 <meta name="twitter:description">
   
   
@@ -117,46 +118,108 @@
     
   </div>
 </aside>
-      <section id="main">
-      <div class="archive-year-wrap">
-        <a href="/archives/2015" class="archive-year">2015</a>
-      </div>
-      <section class="archives-wrap">
-        <div class="archives">
+      <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
     
-    <div class="archive-article-thumbnail">
-      <a href="/2015/06/08/hello-world/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-    </div>
     
-    <header class="archive-article-header">
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/08/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      about
     </h1>
   
 
-      
-        <div class="archive-article-date">
+        <div class="article-meta">
+          <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/06/08/hello-world/">
-    <time datetime="2015-06-08T05:45:50.000Z" itemprop="datePublished">6月 8</time>
+  <a href="/about/index.html">
+    <time datetime="2015-06-08T04:43:53.000Z" itemprop="datePublished">2015年06月8日</time>
   </a>
 </div>
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-    </header>
+
+        
+      
+    </div>
+    
+      <div id="menu-nav">
+	<div id="title-nav">文章导航<div>→</div>
+	</div>
+	<div id="content-nav">
+		
+	</div>
+</div>
+<script>
+(function($, scrollSpeed, hiddenSpeed, fadeSpeed) {
+	var T = $('#toc');
+	var M = $('#menu-nav');
+	var C = $('#content-nav');
+	var Tx = T.position().top;
+	$(window).scroll(function() {
+		var top = $(this).scrollTop();
+		if (top >= Tx + 300) {
+			M.stop().fadeIn(fadeSpeed);
+			T.stop().fadeTo(fadeSpeed, 0);
+		} else {
+			M.stop().fadeOut(fadeSpeed);
+			T.stop().fadeTo(fadeSpeed, 1);
+		}
+	});
+	$('.toc-link').click(function(e) {
+		//阻止默认跳转
+		e.preventDefault();
+		//定义滚动动画
+		var scrollTarget = $('#' + $(this).children('.toc-text').first().text());
+		$("html,body").animate({
+			scrollTop: scrollTarget.prev().offset().top
+		}, scrollSpeed);
+	});
+	C.click(function(e) {
+		e.stopPropagation();
+	});
+	M.click(function() {
+		C.toggle(hiddenSpeed, 'linear', function() {
+			var T = $('#title-nav div');
+			T.text() == '←' ? T.text('→') : T.text('←');
+		});
+	});
+})(jQuery, 500, 200, 100);
+</script>
+    
+    <footer class="article-footer">
+      <a data-url="http://wenhao.github.io/about/index.html" data-id="cianeypuz0000ekx86zsjrdfi" class="article-share-link">分享到</a>
+      
+        <a href="http://wenhao.github.io/about/index.html#ds-thread" class="article-comment-link">评论</a>
+      
+      
+    </footer>
   </div>
-</article>
   
-    </div></section>
+    
+  
+</article>
+
+
+  <section id="comments">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/about/index.html" data-title="about" data-url="http://wenhao.github.io/about/index.html">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+     </div>
+     <div class="ds-share" data-thread-key="http://wenhao.github.io/about/index.html" data-title="about" data-url="http://wenhao.github.io/about/index.html">
+         <div class="ds-share-aside-right">
+           <div class="ds-share-aside-inner">
+           </div>
+           <div class="ds-share-aside-toggle">分享到</div>
+         </div>
+     </div>
   </section>
+</section>
       
         <aside id="sidebar">
   
