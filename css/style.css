@@ -1,4 +1,4 @@
-body {
+menu-navbody {
   width: 100%;
 }
 body:before,
@@ -1205,7 +1205,7 @@ a.article-title:hover {
   cursor: pointer;
   z-index: 150;
   right: 0;
-  top: 20%;
+  top: 40%;
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
   color: #fff;
