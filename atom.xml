@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-  <title><![CDATA[Wen Hao's Blog]]></title>
+  <title><![CDATA[源代码]]></title>
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
