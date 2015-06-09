@@ -679,6 +679,10 @@ a:visited {
 #profile .inner .article-info .article-info-block:first-child {
   border-right: 1px solid #eceff2;
 }
+#profile .inner .contact-info .qrcode {
+  width: auto !important;
+  max-width: 100%;
+}
 #profile .inner .contact-info .contact-list {
   width: 100%;
 }
@@ -696,10 +700,6 @@ a:visited {
 }
 #profile .inner .contact-info .contact-list td a:hover {
   color: #565a5f;
-}
-#profile .inner .contact-info .qrcode {
-    width: auto !important;
-    max-width: 100%;
 }
 #profile .inner .contact-info .contact-list td a:hover:after {
   right: -50%;
