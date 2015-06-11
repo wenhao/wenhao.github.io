@@ -1203,28 +1203,32 @@ a.article-title:hover {
   max-width: 100%;
   margin: 0 auto;
 }
-#menu-nav {
+#article-nav {
+  float: right;
   position: fixed;
   display: block;
   cursor: pointer;
   z-index: 150;
-  right: 0;
+  right: -165px;
   top: 40%;
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
   color: #fff;
-  background: rgba(100,100,100,0.74);
+  background: rgba(100,100,100,0.6);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
-#menu-nav #title-nav {
+#article-nav #article-nav-title {
   display: inline-block;
   vertical-align: middle;
-  width: 30px;
-  height: 100%;
+  width: 28px;
+  height: 60px;
   font-size: 16px;
   text-align: center;
   padding: 10px 0;
+  cursor: pointer;
 }
-#menu-nav #content-nav {
+#article-nav #article-nav-content {
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
@@ -1236,21 +1240,21 @@ a.article-title:hover {
   line-height: 18px;
   font-size: 10px;
 }
-#menu-nav #content-nav li {
+#article-nav #article-nav-content li {
   list-style-type: none;
   width: 100%;
 }
-#menu-nav #content-nav li a {
+#article-nav #article-nav-content li a {
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: #fff;
 }
-#menu-nav #content-nav li a:hover {
+#article-nav #article-nav-content li a:hover {
   background: #646464;
 }
-#menu-nav #content-nav li .toc-child a {
+#article-nav #article-nav-content li .toc-child a {
   padding-left: 20px;
 }
 #comments {
