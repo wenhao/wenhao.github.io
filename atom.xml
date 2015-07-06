@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
-  <updated>2015-06-11T05:24:16.000Z</updated>
+  <updated>2015-07-06T04:55:38.000Z</updated>
   <id>http://wenhao.github.io//</id>
   
   <author>
@@ -16,15 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[微服务利弊权衡]]></title>
+    <link href="http://wenhao.github.io/2015/07/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%A9%E5%BC%8A%E6%9D%83%E8%A1%A1/"/>
+    <id>http://wenhao.github.io/2015/07/06/微服务利弊权衡/</id>
+    <published>2015-07-06T04:14:31.000Z</published>
+    <updated>2015-07-06T04:55:38.000Z</updated>
+    <content type="html"><![CDATA[<p>一些开发团队意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构风格</a>是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。</p>
+<h4 id="微服务的优点…">微服务的优点…</h4><ul>
+<li><a href="./微服务利弊权衡.md/#高度模块边界化">高度模块边界化</a>：微服务促进系统模块化，特别是针对大型团队。</li>
+<li><a href="./微服务利弊权衡.md/#独立部署">独立部署</a>：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。</li>
+<li><a href="./微服务利弊权衡.md/#技术架构多样性">技术架构多样性</a>：使用微服务你可以混用多种开发语言，开发框架和数据存储设备。</li>
+</ul>
+<h4 id="微服务缺点…">微服务缺点…</h4><ul>
+<li><a href="./微服务利弊权衡.md/#分布式">分布式</a>：由于远程方法调用低效及出错风险极高，导致分布式系统很难开发。</li>
+<li><a href="./微服务利弊权衡.md/#最终一致性">最终一致性</a>：比起开发分布式系统，保持系统之间的高度一致性更加困难，它意味着每个人都必须关注系统的最终一致性。</li>
+<li><a href="./微服务利弊权衡.md/#运维复杂性">运维复杂性</a>：微服务经常更新并重新部署，所以你需要一个成熟的团队来管理这些微服务。</li>
+</ul>
+<p><a href="./微服务利弊权衡.md/#总结">总结</a></p>
+<h3 id="高度模块边界化">高度模块边界化</h3><h3 id="总结">总结</h3>]]></content>
+    <summary type="html">
+    <![CDATA[<p>一些开发团队意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构风格</a>是解决大型单体架构的首选方案。同时某些团队也发现]]>
+    </summary>
+    
+      <category term="Martin Fowler" scheme="http://wenhao.github.io/tags/Martin-Fowler/"/>
+    
+      <category term="微服务" scheme="http://wenhao.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="翻译" scheme="http://wenhao.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[互联网+]]></title>
     <link href="http://wenhao.github.io/2015/06/09/%E4%BA%92%E8%81%94%E7%BD%91/"/>
     <id>http://wenhao.github.io/2015/06/09/互联网/</id>
     <published>2015-06-09T01:13:41.000Z</published>
-    <updated>2015-06-11T05:24:16.000Z</updated>
+    <updated>2015-07-06T04:29:53.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/img/互联网+.jpg" alt="互联网+"></p>
 <p>&emsp;&emsp;眼下，互联网+持续升温，发展迅猛，加之政府大力扶持，中国经济开始进入技术、模式和产业大变革时期。在“站在这个风口上，猪都能飞起来了”的大背景之下，涌现出了一大批勇于创业积极创新的先进集体和个人。</p>
-<a id="more"></a>
 <h3 id="宏观政策">宏观政策</h3><p>&emsp;&emsp;当下，经济下行压力巨大，消费、投资和出口已不再是保持中国经济增长可靠的引擎。中国迫切的需要一个新的政策来拉动经济，促进消费及解决日益严峻的就业压力；加之地产行业的持续低迷，资产加速逃离，大量闲置资金急迫需要寻找下一个可靠的“资金池”以缓解经济运行压力。 “大众创业、万众创新”作为经济增长的双引擎之首写入政府工作报告， 以一种”抛开杂念，放手一搏“的精神激励着广大人民勇于创业积极创新的势头，可见政府抓重点调整产业结构的决心。互联网+恰好在各行各业起到了催化剂的作用，必将加速重塑传统行业的进程。</p>
+<a id="more"></a>
 <h3 id="趋势">趋势</h3><ul>
 <li>连接需求方和供给方，去中心化。带来的是提高效率并充分利用资源，减少中间的分销流程，提供更为个性化的服务。例子：Uber、途家等。</li>
 <li>传统行业互联网化，众多的细分行业都可以通过互联网获得发展机会。例如：B2C、C2C等。</li>
@@ -48,7 +79,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p><img src="/img/互联网+.jpg" alt="互联网+"></p>
-<p>&emsp;&emsp;眼下，互联网+持续升温，发展迅猛，加之政府大力扶持，中国经济开始进入技术、模式和产业大变革时期。在“站在这个风口上，猪都能飞起来了”的大背景之下，涌现出了一大批勇于创业积极创新的先进集体和个人。</p>]]>
+<p>&emsp;&emsp;眼下，互联网+持续升温，发展迅猛，加之政府大力扶持，中国经济开始进入技术、模式和产业大变革时期。在“站在这个风口上，猪都能飞起来了”的大背景之下，涌现出了一大批勇于创业积极创新的先进集体和个人。</p>
+<h3 id="宏观政策">宏观政策</h3><p>&emsp;&emsp;当下，经济下行压力巨大，消费、投资和出口已不再是保持中国经济增长可靠的引擎。中国迫切的需要一个新的政策来拉动经济，促进消费及解决日益严峻的就业压力；加之地产行业的持续低迷，资产加速逃离，大量闲置资金急迫需要寻找下一个可靠的“资金池”以缓解经济运行压力。 “大众创业、万众创新”作为经济增长的双引擎之首写入政府工作报告， 以一种”抛开杂念，放手一搏“的精神激励着广大人民勇于创业积极创新的势头，可见政府抓重点调整产业结构的决心。互联网+恰好在各行各业起到了催化剂的作用，必将加速重塑传统行业的进程。</p>]]>
     
     </summary>
     
