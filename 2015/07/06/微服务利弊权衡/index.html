@@ -19,7 +19,7 @@
 高度的模块边界化：微服务促进系统模块化，特别是针对大型团队。
 独立部署：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。
 技术架构多样性">
-<meta property="og:updated_time" content="2015-07-06T10:12:18.000Z">
+<meta property="og:updated_time" content="2015-07-06T10:12:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务利弊权衡">
 <meta name="twitter:description" content="一些开发团队意识到微服务架构风格是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
 <p>如我之前所说，没有任何理由为什么一个大型单体应用系统不应当具有一个好的模块式的架构。但是大多数人发现这种应用机构很少，因此<a href="https://en.wikipedia.org/wiki/Big_ball_of_mud" target="_blank" rel="external">“大泥球”</a>”任然是普遍使用的架构模型。这种普遍的痛点使得一部分团队转向微服务架构。模块之间解耦之所以可以工作是因为模块的边界减少了模块之间的引用。这样做是一个很有用的策略捷径帮助更快的构建产品功能，但是如果大范围使用却会破坏模块架构和减低团队的生产效率。把几个模块做成分开的服务使得之间的边界更加牢固，但是使它更难寻找痛点。</p>
 <p>一种重要的方面是于持久层解耦。去数据中心化是微服务特征之一，它以为者每一个服务负责管理自己的数据库，其他服务必须通过此服务的公共API获取数据而不是直接访问数据库。这就避免了<a href="http://martinfowler.com/bliki/IntegrationDatabase.html" target="_blank" rel="external">数据库集成</a>，它是大型系统中耦合最主要的因数。</p>
 <p>值得强调的是在大型单体应用中也可以创建坚固的模块边界，但是需要严格的纪律做支撑。同样微服务也可以开发成“大泥球”，但是它需要更多的工作量在做错误的事。以我之见，使用微服务增加了获取更好模块化架构的可能性。如果你对你们团队的纪律规则有信心，很可能获取那种优势，但是团队不断成长变大之后保持这种纪律规则就愈发困难，维护模块边界就变得更为重要。</p>
-<p>如果你创建了错误的边界，这种优势就可能变成一种阻碍。这就是<a href="http://martinfowler.com/bliki/MonolithFirst.html" target="_blank" rel="external">先开发单体应用</a>策略的两个主要原因之一，也就是为什么那些更倾向于提早做微服务时必须先理解某个领域模型。</p>
+<p>如果你创建了错误的边界，这种优势就可能变成一种阻碍。这就是<a href="http://martinfowler.com/bliki/MonolithFirst.html" target="_blank" rel="external">先开发单体应用</a>策略的两个主要原因之一，也就是为什么那些更倾向于<a href="http://martinfowler.com/articles/dont-start-monolith.html" target="_blank" rel="external">提早做微服务</a>时必须先理解某个领域模型。</p>
 <h3 id="分布式">分布式</h3><h3 id="最终一致性">最终一致性</h3><h3 id="独立部署">独立部署</h3><h3 id="运维复杂性">运维复杂性</h3><h3 id="技术架构多样性">技术架构多样性</h3><h3 id="次要因素">次要因素</h3><h3 id="总结">总结</h3><h4 id="脚注">脚注</h4><h4 id="延伸阅读">延伸阅读</h4><h4 id="鸣谢">鸣谢</h4>
       
     </div>
