@@ -19,7 +19,8 @@
 高度的模块边界化：微服务促进系统模块化，特别是针对大型团队。
 独立部署：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。
 技术架构多样性">
-<meta property="og:updated_time" content="2015-07-07T09:34:36.000Z">
+<meta property="og:image" content="http://wenhao.github.io/img/microservice.png">
+<meta property="og:updated_time" content="2015-07-07T10:19:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务利弊权衡">
 <meta name="twitter:description" content="一些开发团队意识到微服务架构风格是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。
@@ -177,7 +178,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
 
-        <p>一些开发团队意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构风格</a>是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。</p>
+        <p><img src="/img/microservice.png" alt="微服务架构"></p>
+<p>一些开发团队意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构风格</a>是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。</p>
 <h4 id="微服务的优点…">微服务的优点…</h4><ul>
 <li><a href="./微服务利弊权衡.md/#高度的模块边界化">高度的模块边界化</a>：微服务促进系统模块化，特别是针对大型团队。</li>
 <li><a href="./微服务利弊权衡.md/#独立部署">独立部署</a>：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。</li>
@@ -204,6 +206,10 @@ var _hmt = _hmt || [];
 <p>第一个问题是性能。你不得不正视功能之间调用的性能最近成为了热点问题，但是远程调用速度很慢。如果你的服务调用多个远程服务，而且每一个服务又调用其他服务，所有的响应时间加起来会变成可怕的潜在隐患。</p>
 <p>当然你可以通过某种方式缓解这个问题。首先你可以增加被调用服务的粒度，你可以只做一些服务。这会使编程模型变得复杂，你不得不考虑批量处理服务之间的调用。这种方法只能达到这种地步，因为一次性你不得不调用所有的关联服务。</p>
 <p>第二种缓解方式是使用异步。如果并行调用六个异步方法，你最慢的速度决定于这六个异步调用中最慢的那个而不是六个异步调用时间总和。这种方式可以获得很大的性能改进，但是同时也会导致另外一个我们所知的问题。异步编程很难：难于实现，也难于调试。但是我听说过的大部分微服务案例表明做异步只是为了达到可以接受的性能指标。</p>
+<p>性能之后是可靠性。你期待正在执行的功能调用能够工作，但是远程方法调用任何时候都可能失败。如果有大量的微服务的话，失败的几率就更大。聪敏的开发人员早就意识到这一点并及早做<a href="http://martinfowler.com/articles/microservices.html#DesignForFailure" target="_blank" rel="external">故障设计</a>。庆幸的是异步调用的策略也同样可以提高故障处理的弹性。但是这并起不了太大作用，你任然需要做其他的工作来找出具体是哪一个远程调用失败了。</p>
+<p>这只是<a href="http://www.infoq.com/cn/news/2009/06/fallacies-distributed-computing" target="_blank" rel="external">分布式计算的谬误</a>提到的前两点。</p>
+<p>对于这个问题有一些说明。首先，大部分问题都是随着单体应用不断扩大而导致。某些单体应用都是相对独立的，通常情况下，大部分工作在遗留系统之上。通过网络远程的方式与这些系统交互同样会遇到这些问题。这就是为什么大多数人倾向于更早的使用微服务架构来处理各网络服务之间的信息交付。这种时候经验就很有帮助了，一个有此经验的团队就能更好的解决这些分布式的问题。</p>
+<p>但是分布式始终会是个成本问题。每次谈论分布式问题我都有点勉强，因为大多数人在使用分布式机构之前低估了它带来的问题。</p>
 <h3 id="最终一致性">最终一致性</h3><h3 id="独立部署">独立部署</h3><h3 id="运维复杂性">运维复杂性</h3><h3 id="技术架构多样性">技术架构多样性</h3><h3 id="次要因素">次要因素</h3><h3 id="总结">总结</h3><h4 id="脚注">脚注</h4><h4 id="延伸阅读">延伸阅读</h4><h4 id="鸣谢">鸣谢</h4>
       
     </div>
@@ -261,7 +267,8 @@ var _hmt = _hmt || [];
             <div class="item-thumbnail">
               <a href="/2015/07/06/微服务利弊权衡/" class="thumbnail">
   
-    <span class="thumbnail-image thumbnail-none"></span>
+    <span style="background-image:url(/img/microservice.png
+)" alt="微服务利弊权衡" class="thumbnail-image"></span>
   
 </a>
             </div>
