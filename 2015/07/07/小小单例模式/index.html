@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>源代码</title>
+  <title>小小单例模式 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="源代码">
-<meta property="og:url" content="http://wenhao.github.io/index.html">
+  <meta name="description" content="你熟悉这段代码吗：
+12345678910111213public class X &amp;#123;  private static X instance = null;  private X() &amp;#123;&amp;#125;  public static X instance() &amp;#123;    if (instance == null)      instance = new X();    re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小小单例模式">
+<meta property="og:url" content="http://wenhao.github.io/2015/07/07/小小单例模式/index.html">
 <meta property="og:site_name" content="源代码">
-<meta property="og:description">
+<meta property="og:description" content="你熟悉这段代码吗：
+12345678910111213public class X &amp;#123;  private static X instance = null;  private X() &amp;#123;&amp;#125;  public static X instance() &amp;#123;    if (instance == null)      instance = new X();    re">
+<meta property="og:updated_time" content="2015-07-08T01:18:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="源代码">
-<meta name="twitter:description">
+<meta name="twitter:title" content="小小单例模式">
+<meta name="twitter:description" content="你熟悉这段代码吗：
+12345678910111213public class X &amp;#123;  private static X instance = null;  private X() &amp;#123;&amp;#125;  public static X instance() &amp;#123;    if (instance == null)      instance = new X();    re">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -132,8 +136,7 @@ var _hmt = _hmt || [];
     
   </div>
 </aside>
-      <section id="main">
-      <article id="post-小小单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-小小单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -141,8 +144,8 @@ var _hmt = _hmt || [];
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/07/小小单例模式/">小小单例模式</a>
+    <h1 class="article-title" itemprop="name">
+      小小单例模式
     </h1>
   
 
@@ -164,6 +167,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
+
         <p><strong>你熟悉这段代码吗：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> X instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">X</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> X <span class="title">instance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">      instance = <span class="keyword">new</span> X();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// more methods...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><em>当然。这是GOF这本书里面提到的单例模式。但是我总是听到别人说我们不应该使用它。</em></p>
@@ -173,14 +177,63 @@ var _hmt = _hmt || [];
 <p><em>因为你不能模拟(mock)一个单例对象。</em></p>
 <p><strong>不能吗？为什么不能？</strong></p>
 <p><em>这样说吧，因为唯一能够访问私有变量的类只有单例对象自身，不暴露给外部就没办法模拟(mock)。</em></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/07/小小单例模式/#more">阅读全文</a>
-          </p>
-        
+<a id="more"></a>
+<p><strong>你知道封装和测试的规则吗？</strong></p>
+<p><em>嗯，不知道。规则是什么呢？</em></p>
+<p><strong>测试胜过封装。</strong></p>
+<p><em>这是什么意思呢？</em></p>
+<p><strong>意思就是测试赢了封装。只是为了维持封装性的话，没有测试会被限制访问某个变量。</strong></p>
+<p><em>你的意思是如果测试需要访问私有变量…</em></p>
+<p><strong>…变量不应该是私有的。对。</strong></p>
+<p><em>听起来好像不对。我的意思是，封装，呃，很重要！</em></p>
+<p><strong>测试更为重要。</strong></p>
+<p><em>等等。什么？</em></p>
+<p><strong>如果代码不能够被测试，封装性好的代码又有什么好的呢？</strong></p>
+<p><em>好，好吧，但是如果我们不得不测试单例对象呢。</em></p>
+<p><strong>看如下代码。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> X instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">X</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> X <span class="title">instance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">      instance = <span class="keyword">new</span> X();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// methods.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestX</span> </span>&#123;</span><br><span class="line">  <span class="annotation">@Before</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    X.instance = <span class="keyword">new</span> XMock();   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XMock</span> <span class="keyword">extends</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overide methods</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>哦，你把实例变量变成“包”范围。</em></p>
+<p><strong>对。</strong></p>
+<p><em>这样的话你就可以模拟单例对象了。</em></p>
+<p><strong>对。考虑一下代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> X instance = <span class="keyword">new</span> X();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">X</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// methods.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>等等！实例方法哪去了？</em></p>
+<p><strong>我不需要实例方法。</strong></p>
+<p><em>哦，这个实例变量是公共的。你可以直接使用它。</em></p>
+<p><strong>对。</strong></p>
+<p><em>但是…但是…其他人可能重写它？</em></p>
+<p><strong>谁会做那事？</strong></p>
+<p><em>我不知道。呃，某些坏人吧。</em></p>
+<p><strong>你们团队有这种坏人吗？</strong></p>
+<p><em>没有。但是。只是感觉这样做不太安全。</em></p>
+<p><strong>这样，如果它是公共API的一部分，我同意你的观点。但是如果这段代码只会被我们项目用到那就另当别论了…</strong></p>
+<p><em>我们应该信任我们团队成员？</em></p>
+<p><strong>当然。</strong></p>
+<p><em>这样更容易模拟(mock)，对吗？</em></p>
+<p><strong>当然。</strong></p>
+<p><em>如此的话我猜我们应用使用单例模式如果我们想用的话。</em></p>
+<p><strong>当然。经管大多数情况下我不想。</strong></p>
+<p><em>这一番讨论之后，你现在却想告诉我你不想使用单例模式？</em></p>
+<p><strong>是这样，我想理解为什么不适用它更为重要。</strong></p>
+<p><em>好吧，为什么你不适用单例模式？</em></p>
+<p><strong>我有时候也用。特别是在做公共APIs的时候。</strong></p>
+<p><em>你的意思是又是信任的问题？</em></p>
+<p><strong>对。在公共API中如果我想确保只有一个实例被创建时，我就会使用单例模式。</strong></p>
+<p><em>好吧，但是如果不是在做公共API的时候，但是你任然想只创建一个实例呢？</em></p>
+<p><strong>这样的话，我就直接的创建一个。</strong></p>
+<hr>
+<p>翻译自<a href="http://blog.cleancoder.com/uncle-bob/2015/07/01/TheLittleSingleton.html" target="_blank" rel="external">The Little Singleton</a></p>
+
       
     </div>
 
+    
+      <div id="article-nav">
+	<div id="article-nav-title">文章目录<div>←</div></div>
+	<div id="article-nav-content">
+		
+	</div>
+</div>
     
     <footer class="article-footer">
       <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cibu2w6mz0000jkx8wswsfm2k" class="article-share-link">分享到</a>
@@ -193,135 +246,26 @@ var _hmt = _hmt || [];
     </footer>
   </div>
   
-</article>
-
-
     
-      <article id="post-微服务利弊权衡" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/06/微服务利弊权衡/">微服务利弊权衡</a>
-    </h1>
   
+    <a href="/2015/07/06/微服务利弊权衡/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">微服务利弊权衡</div>
+    </a>
+  
+</nav>
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/07/06/微服务利弊权衡/">
-    <time datetime="2015-07-06T04:14:31.000Z" itemprop="datePublished">2015年07月6日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/microservice.png" alt="微服务架构"></p>
-<p>一些开发团队意识到<a href="http://martinfowler.com/articles/microservices.html">微服务架构风格</a>是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。</p>
-<h4 id="微服务的优点…">微服务的优点…</h4><ul>
-<li><a href="./微服务利弊权衡.md/#高度的模块边界化">高度的模块边界化</a>：微服务促进系统模块化，特别是针对大型团队。</li>
-<li><a href="./微服务利弊权衡.md/#独立部署">独立部署</a>：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。</li>
-<li><a href="./微服务利弊权衡.md/#技术架构多样性">技术架构多样性</a>：使用微服务你可以混用多种开发语言，开发框架和数据存储设备。</li>
-</ul>
-<h4 id="微服务缺点…">微服务缺点…</h4><ul>
-<li><a href="./微服务利弊权衡.md/#分布式">分布式</a>：由于远程方法调用低效及出错风险极高，导致分布式系统很难开发。</li>
-<li><a href="./微服务利弊权衡.md/#最终一致性">最终一致性</a>：比起开发分布式系统，保持系统之间的高度一致性更加困难，它意味着每个人都必须关注系统的最终一致性。</li>
-<li><a href="./微服务利弊权衡.md/#运维复杂性">运维复杂性</a>：微服务经常更新并重新部署，所以你需要一个成熟的团队来管理这些微服务。</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/06/微服务利弊权衡/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cibrefe2s0008yix8nfhiibb4" class="article-share-link">分享到</a>
-      
-        <a href="http://wenhao.github.io/2015/07/06/微服务利弊权衡/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-    
-      <article id="post-互联网" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/09/互联网/">互联网+</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/06/09/互联网/">
-    <time datetime="2015-06-09T01:13:41.000Z" itemprop="datePublished">2015年06月9日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/互联网/">互联网+</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/互联网+.jpg" alt="互联网+"></p>
-<p>&emsp;&emsp;眼下，互联网+持续升温，发展迅猛，加之政府大力扶持，中国经济开始进入技术、模式和产业大变革时期。在“站在这个风口上，猪都能飞起来了”的大背景之下，涌现出了一大批勇于创业积极创新的先进集体和个人。</p>
-<h3 id="宏观政策">宏观政策</h3><p>&emsp;&emsp;当下，经济下行压力巨大，消费、投资和出口已不再是保持中国经济增长可靠的引擎。中国迫切的需要一个新的政策来拉动经济，促进消费及解决日益严峻的就业压力；加之地产行业的持续低迷，资产加速逃离，大量闲置资金急迫需要寻找下一个可靠的“资金池”以缓解经济运行压力。 “大众创业、万众创新”作为经济增长的双引擎之首写入政府工作报告， 以一种”抛开杂念，放手一搏“的精神激励着广大人民勇于创业积极创新的势头，可见政府抓重点调整产业结构的决心。互联网+恰好在各行各业起到了催化剂的作用，必将加速重塑传统行业的进程。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/09/互联网/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="cibrefe2h0000yix8qs2ceet1" class="article-share-link">分享到</a>
-      
-        <a href="http://wenhao.github.io/2015/06/09/互联网/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/互联网/">互联网+</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-    </section>
+  <section id="comments">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2015/07/07/小小单例模式/" data-title="小小单例模式" data-url="http://wenhao.github.io/2015/07/07/小小单例模式/">
+     </div>
+  </section>
+</section>
       
         <aside id="sidebar">
   
