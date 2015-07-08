@@ -20,7 +20,7 @@
 独立部署：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。
 技术架构多样性">
 <meta property="og:image" content="http://wenhao.github.io/img/microservice.png">
-<meta property="og:updated_time" content="2015-07-08T05:18:50.000Z">
+<meta property="og:updated_time" content="2015-07-08T05:42:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务利弊权衡">
 <meta name="twitter:description" content="一些开发团队意识到微服务架构风格是解决大型单体架构的首选方案。同时某些团队也发现微服务架构会降低生产效率。与其他架构一样，微服务也具有其利与弊。决定在特定场景之下使用微服务架构之前了解这些还是很有必要的。
@@ -219,7 +219,10 @@ var _hmt = _hmt || [];
 <p>这种改变对整个环境产业具有重大的意义，同样它也深远的影响着微服务。引入微服务就是为了解决部署大型单体应用的复杂度，即便是修改单体应用很小的一部分也可能导致整个部署失败。微服务的一个主要原则就是<a href="http://martinfowler.com/articles/microservices.html#ComponentizationViaServices" target="_blank" rel="external">服务即组件</a>，它们可以独立的部署。也就是说当你修改某个服务时，你只需要测试然后部署这个服务就够了。即便你搞砸了这个服务，也不会使整个系统崩溃。毕竟，由于需要故障设计，即使你的某个组件完全失败掉也不应当使系统的其他部分停止工作。</p>
 <p>这是一种双向选择的关系。由于大部分微服务需要频繁的部署，所以你也许要同时兼顾部署。这就是为什么快速应用部署和快速基础设施创建是<a href="http://martinfowler.com/bliki/MicroservicePrerequisites.html" target="_blank" rel="external">微服务的前提</a>。比起这些基础的要求只要，你需要的是做持续交付。</p>
 <p>持续交付最大的好处就是减少从想法到产品环境可运行的软件的周期时间。公司组织能够快速反应市场变化，比起他们的竞争对手开发新功能更加快速。</p>
-<h3 id="运维复杂性">运维复杂性</h3><h3 id="技术架构多样性">技术架构多样性</h3><h3 id="次要因素">次要因素</h3><h3 id="总结">总结</h3><h4 id="脚注">脚注</h4><h4 id="延伸阅读">延伸阅读</h4><h4 id="鸣谢">鸣谢</h4>
+<p>因为使用微服务所以大部分人开始使用持续交付，有必要提一下甚至大型单体应用也可以做持续交付。Facebook和Etsy就是两个最好的例子。也有很多尝试独立部署微服务失败的例子，多个微服务之间需要协调依次发布。但是我也听不少人说微服务做持续交付更为简单，但是我并不是很相信这跟模块化有太多的关系——尽管模块化确实与交付速度直接相关。</p>
+<h3 id="运维复杂性">运维复杂性</h3><h3 id="技术架构多样性">技术架构多样性</h3><h3 id="次要因素">次要因素</h3><h3 id="总结">总结</h3><h4 id="脚注">脚注</h4><h4 id="延伸阅读">延伸阅读</h4><h4 id="鸣谢">鸣谢</h4><hr>
+<p>翻译自<a href="http://martinfowler.com/articles/microservice-trade-offs.html" target="_blank" rel="external">Microservice Trade-Offs</a>。</p>
+
       
     </div>
 
