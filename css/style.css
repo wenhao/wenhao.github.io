@@ -1203,7 +1203,7 @@ a.article-title:hover {
   max-width: 100%;
   margin: 0 auto;
 }
-#article-nav {
+#article-toc {
   float: right;
   position: fixed;
   display: block;
@@ -1218,7 +1218,7 @@ a.article-title:hover {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-#article-nav #article-nav-title {
+#article-toc #article-toc-title {
   display: inline-block;
   vertical-align: middle;
   width: 28px;
@@ -1227,7 +1227,7 @@ a.article-title:hover {
   padding: 10px 0;
   cursor: pointer;
 }
-#article-nav #article-nav-content {
+#article-toc #article-toc-content {
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
@@ -1239,21 +1239,21 @@ a.article-title:hover {
   line-height: 18px;
   font-size: 10px;
 }
-#article-nav #article-nav-content li {
+#article-toc #article-toc-content li {
   list-style-type: none;
   width: 100%;
 }
-#article-nav #article-nav-content li a {
+#article-toc #article-toc-content li a {
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: #fff;
 }
-#article-nav #article-nav-content li a:hover {
+#article-toc #article-toc-content li a:hover {
   background: #646464;
 }
-#article-nav #article-nav-content li .toc-child a {
+#article-toc #article-toc-content li .toc-child a {
   padding-left: 20px;
 }
 .article-baidu-share-link {

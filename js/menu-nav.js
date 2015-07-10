@@ -1,13 +1,13 @@
 /* Mouse Leave */
-$("#article-nav").mouseleave(function(){
-	var articleNav = $('#article-nav-title div');
+$("#article-toc").mouseleave(function(){
+	var articleNav = $('#article-toc-title div');
 	articleNav.text('←');
-	$("#article-nav").animate({right: "-165px"}, 200);
+	$("#article-toc").animate({right: "-165px"}, 200);
 });
 
 /* Mouse Enter*/
-$("#article-nav").mouseenter(function() {
-	var articleNav = $('#article-nav-title div');
+$("#article-toc").mouseenter(function() {
+	var articleNav = $('#article-toc-title div');
 	articleNav.text('→');
-	$("#article-nav").animate({right: "0px"}, 200);
+	$("#article-toc").animate({right: "0px"}, 200);
 });
