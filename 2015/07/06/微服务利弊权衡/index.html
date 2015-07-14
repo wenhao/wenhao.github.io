@@ -6,25 +6,25 @@
   <title>微服务利弊权衡 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="现在许多开发团队已经意识到微服务架构模式会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能帮助你做出更明智的选择。
-微服务的优点…
-高度的模块边界化：微服务促进系统模块化，特别是针对大型团队。
-独立部署：微服务更容易部署，而且由于微服务大多">
+微服务提供的好处…
+高度的模块边界化：微服务促进系统模块化，对大型团队尤其重要。
+独立部署：简单的服务部署更为容易因为它的依">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务利弊权衡">
 <meta property="og:url" content="http://wenhao.github.io/2015/07/06/微服务利弊权衡/index.html">
 <meta property="og:site_name" content="源代码">
 <meta property="og:description" content="现在许多开发团队已经意识到微服务架构模式会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能帮助你做出更明智的选择。
-微服务的优点…
-高度的模块边界化：微服务促进系统模块化，特别是针对大型团队。
-独立部署：微服务更容易部署，而且由于微服务大多">
+微服务提供的好处…
+高度的模块边界化：微服务促进系统模块化，对大型团队尤其重要。
+独立部署：简单的服务部署更为容易因为它的依">
 <meta property="og:image" content="http://wenhao.github.io/img/microservice.png">
-<meta property="og:updated_time" content="2015-07-14T05:41:59.000Z">
+<meta property="og:updated_time" content="2015-07-14T05:56:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务利弊权衡">
 <meta name="twitter:description" content="现在许多开发团队已经意识到微服务架构模式会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能帮助你做出更明智的选择。
-微服务的优点…
-高度的模块边界化：微服务促进系统模块化，特别是针对大型团队。
-独立部署：微服务更容易部署，而且由于微服务大多">
+微服务提供的好处…
+高度的模块边界化：微服务促进系统模块化，对大型团队尤其重要。
+独立部署：简单的服务部署更为容易因为它的依">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -177,12 +177,12 @@ var _hmt = _hmt || [];
 
         <p><img src="/img/microservice.png" alt="微服务架构"></p>
 <p>现在许多开发团队已经意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构模式</a>会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能帮助你做出更明智的选择。</p>
-<h4 id="微服务的优点…">微服务的优点…</h4><ul>
-<li><a href="./#高度的模块边界化">高度的模块边界化</a>：微服务促进系统模块化，特别是针对大型团队。</li>
-<li><a href="./#独立部署">独立部署</a>：微服务更容易部署，而且由于微服务大多是独立自主的，当它出错的时候不大可能引起整个系统崩溃。</li>
-<li><a href="./#技术架构多样性">技术架构多样性</a>：使用微服务你可以混用多种开发语言，开发框架和数据存储设备。</li>
+<h4 id="微服务提供的好处…">微服务提供的好处…</h4><ul>
+<li><a href="./#高度的模块边界化">高度的模块边界化</a>：微服务促进系统模块化，对大型团队尤其重要。</li>
+<li><a href="./#独立部署">独立部署</a>：简单的服务部署更为容易因为它的依赖更少，并且服务是相对独立自主的，而且当某个服务出错时不太可能引起整个应用程序系统崩溃。</li>
+<li><a href="./#技术多样性">技术多样性</a>：使用微服务你可以混用多种开发语言，开发框架和数据存储技术。</li>
 </ul>
-<h4 id="微服务缺点…">微服务缺点…</h4><ul>
+<h4 id="微服务引入的成本…">微服务引入的成本…</h4><ul>
 <li><a href="./#分布式">分布式</a>：由于远程方法调用低效及出错风险极高，导致分布式系统很难开发。</li>
 <li><a href="./#最终一致性">最终一致性</a>：比起开发分布式系统，保持系统之间的高度一致性更加困难，它意味着每个人都必须关注系统的最终一致性。</li>
 <li><a href="./#运维复杂性">运维复杂性</a>：微服务经常更新并重新部署，所以你需要一个成熟的团队来管理这些微服务。</li>
@@ -253,7 +253,7 @@ var _hmt = _hmt || [];
       <div id="article-toc">
 	<div id="article-toc-title">文章目录<div>←</div></div>
 	<div id="article-toc-content">
-		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务的优点…"><span class="toc-number">1.</span> <span class="toc-text">微服务的优点…</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务缺点…"><span class="toc-number">2.</span> <span class="toc-text">微服务缺点…</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高度的模块边界化"><span class="toc-number"></span> <span class="toc-text">高度的模块边界化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式"><span class="toc-number"></span> <span class="toc-text">分布式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终一致性"><span class="toc-number"></span> <span class="toc-text">最终一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立部署"><span class="toc-number"></span> <span class="toc-text">独立部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运维复杂性"><span class="toc-number"></span> <span class="toc-text">运维复杂性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术架构多样性"><span class="toc-number"></span> <span class="toc-text">技术架构多样性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#次要因素"><span class="toc-number"></span> <span class="toc-text">次要因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#脚注"><span class="toc-number">0.1.</span> <span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#延伸阅读"><span class="toc-number">0.2.</span> <span class="toc-text">延伸阅读</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#鸣谢"><span class="toc-number">0.3.</span> <span class="toc-text">鸣谢</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务提供的好处…"><span class="toc-number">1.</span> <span class="toc-text">微服务提供的好处…</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务引入的成本…"><span class="toc-number">2.</span> <span class="toc-text">微服务引入的成本…</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高度的模块边界化"><span class="toc-number"></span> <span class="toc-text">高度的模块边界化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式"><span class="toc-number"></span> <span class="toc-text">分布式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终一致性"><span class="toc-number"></span> <span class="toc-text">最终一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立部署"><span class="toc-number"></span> <span class="toc-text">独立部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运维复杂性"><span class="toc-number"></span> <span class="toc-text">运维复杂性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术架构多样性"><span class="toc-number"></span> <span class="toc-text">技术架构多样性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#次要因素"><span class="toc-number"></span> <span class="toc-text">次要因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#脚注"><span class="toc-number">0.1.</span> <span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#延伸阅读"><span class="toc-number">0.2.</span> <span class="toc-text">延伸阅读</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#鸣谢"><span class="toc-number">0.3.</span> <span class="toc-text">鸣谢</span></a></li></ol></li></ol>
 	</div>
 </div>
     
