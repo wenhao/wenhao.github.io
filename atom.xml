@@ -235,7 +235,7 @@
     <link href="http://wenhao.github.io/2015/07/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%A9%E5%BC%8A%E6%9D%83%E8%A1%A1/"/>
     <id>http://wenhao.github.io/2015/07/06/微服务利弊权衡/</id>
     <published>2015-07-06T04:14:31.000Z</published>
-    <updated>2015-07-14T09:58:33.000Z</updated>
+    <updated>2015-07-15T01:24:39.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/img/microservice.png" alt="微服务架构"></p>
 <p>现在许多开发团队已经意识到<a href="http://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务架构模式</a>会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能帮助你做出更明智的选择。</p>
 <h4 id="微服务提供的好处…">微服务提供的好处…</h4><ul>
@@ -255,7 +255,12 @@
 <p>微服务的提倡者很快就提出了<a href="http://www.thoughtworks.com/insights/blog/demystifying-conways-law" target="_blank" rel="external">康韦法则</a>，这个概念的意思是软件设计的架构，实际上反应了公司的组织与沟通架构。对于大型团队，尤其是团队分布在不同的地区时，在决定系统架构时，要考虑到小团队内部的沟通会比在大团队内的沟通更为高效。微服务允许各个团队在这种高效的沟通模式下维护自己相对独立的服务单元。</p>
 <p>正如我之前提到的，单体应用为什么不应该有模块化特性呢，这说不通，找不到任何理由。但是据大部分人有多年的经验来说，高度模块化的单体应用不过九牛一毛，因为大部分程序任然使用的是<a href="https://en.wikipedia.org/wiki/Big_ball_of_mud" target="_blank" rel="external">“大泥球”</a>这种架构模式。正式由于大部分单体应用最终都会存在这个问题，一些团队开始转向使用微服务架构。模块化之所以可以解耦是因为模块的边界化特性会阻碍模块之间的相互引用，但麻烦的是，对于单体应用系统，通常情况下会绕过这些阻碍。这样做可以帮助开发团队快速交付新功能，是一个高效可行的策略，但是如果大范围使用反而会破坏已有的模块化架构并降低开发团队的工作效率。把模块做成独立分开的微服务会使这种边界化优势更加显著，让那些问题更难出现。</p>
 <p>一种重要的方面是于持久层解耦。去数据中心化是微服务特征之一，它以为者每一个服务负责管理自己的数据库，其他服务必须通过此服务的公共API获取数据而不是直接访问数据库。这就避免了<a href="http://martinfowler.com/bliki/IntegrationDatabase.html" target="_blank" rel="external">数据库集成</a>，它是大型系统中耦合最主要的因数。</p>
-<p>值得强调的是在大型单体应用中也可以创建坚固的模块边界，但是需要严格的纪律做支撑。同样微服务也可以开发成“大泥球”，但是它需要更多的工作量在做错误的事。以我之见，使用微服务增加了获取更好模块化架构的可能性。如果你对你们团队的纪律规则有信心，很可能获取那种优势，但是团队不断成长变大之后保持这种纪律规则就愈发困难，维护模块边界就变得更为重要。</p>
+<p>An important aspect of this coupling is persistent data. One of the key characteristics of microservices is Decentralized Data Management, which says that each service manages its own database and any other service must go through the service’s API to get at it. This eliminates Integration Databases, which are a major source of nasty coupling in larger systems.</p>
+<p>【修改】：</p>
+<ol>
+<li><p>值得强调的是在大型单体应用中也可以创建坚固的模块边界，但是需要严格的纪律做支撑。同样微服务也可以开发成“大泥球”，但是它需要更多的工作量在做错误的事。以我之见，使用微服务增加了获取更好模块化架构的可能性。如果你对你们团队的纪律规则有信心，很可能获取那种优势，但是团队不断成长变大之后保持这种纪律规则就愈发困难，维护模块边界就变得更为重要。</p>
+</li>
+</ol>
 <p>如果你创建了错误的边界，这种优势就可能变成一种阻碍。这就是<a href="http://martinfowler.com/bliki/MonolithFirst.html" target="_blank" rel="external">先开发单体应用</a>策略的两个主要原因之一，也就是为什么那些更倾向于<a href="http://martinfowler.com/articles/dont-start-monolith.html" target="_blank" rel="external">提早做微服务</a>时必须先理解某个领域模型。</p>
 <p>然而对于此的警告我还没没有说完。只有在系统维护一段时间之后你才能得出结论这个是否是好的模块化系统。同理，只有在我们使用微服务数年之后，我们才能知道微服务是否是引领更好的系统模块化的解决方案。此外，更早的采用此架构就更加明智，因此，在一般团队开发的微服务之后，收益模块化的优势往往有些延迟。即使那样，我们不得不接受一般团队开发的一般软件，不是与优秀的团队比较结果而是我们不得不与使用单体应用架构开发的软件做比较——这是一种微妙的对照评估。</p>
 <p>我将要说的都是别人早期实践过这种架构风格的一些真实问题，他们的判断是越早维护他们的模块越有意义。</p>
