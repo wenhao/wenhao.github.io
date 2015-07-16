@@ -5,7 +5,7 @@
   <subtitle><![CDATA[敏捷, 持续交付, 微服务, 重构, 大数据, Java]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
-  <updated>2015-07-16T08:54:51.000Z</updated>
+  <updated>2015-07-16T09:34:24.000Z</updated>
   <id>http://wenhao.github.io//</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Cloud Foundry应用程序打包流程]]></title>
+    <link href="http://wenhao.github.io/2015/07/16/Cloud-Foundry%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/"/>
+    <id>http://wenhao.github.io/2015/07/16/Cloud-Foundry应用程序打包流程/</id>
+    <published>2015-07-16T09:29:14.000Z</published>
+    <updated>2015-07-16T09:34:24.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/img/app_push_flow_diagram.png" alt="应用程序预处理时序图"></p>
+<ol>
+<li>在命令行里，开发人员进入应用程序的目录并使用cf命令行工具执行<code>cf push</code>命令。</li>
+<li>此命令会通知Cloud Controller为此应用程序创建记录信息。</li>
+<li>Cloud Controller保存应用程序的元数据信息(例如：应用程序名称，用户定义的实例数量和buildpack)。</li>
+<li>此命令会上传应用程序文件。</li>
+<li>Cloud Controller在大数据存储中存储应用程序的字节文件。</li>
+<li>此命令会发起应用程序启动指令。</li>
+<li>由于此应用程序未被打包过，Cloud Controller就会在DEA池里面选择一个合适的DEA实例来打包应用程序。DEA会根据buildpack来打包应用程序。</li>
+<li>DEA打包过程中会输出所有的打包信息以便开发人员做故障排除。</li>
+<li>应用程序打包好之后会成为一个“droplet”，存储在大数据存储之中。结果会被缓存下来以供下次直接使用。</li>
+<li>DEA打包通知Cloud Controller打包完成。</li>
+<li>Cloud Controller会从DEA池中选择一个或者多个来运行已经打包好的应用程序。</li>
+<li>运行着的DEA会时刻通知Cloud Controller应用程序的状态。</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/img/app_push_flow_diagram.png" alt="应用程序预处理时序图"></p>
+<ol>
+<li>在命令行里，开发人员进入应用程序的目录并使用cf命令行工具执行<code>cf push</code>命令。</li>
+<li>]]>
+    </summary>
+    
+      <category term="Cloud Foundry" scheme="http://wenhao.github.io/tags/Cloud-Foundry/"/>
+    
+      <category term="翻译" scheme="http://wenhao.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Cloud Foundry文档" scheme="http://wenhao.github.io/categories/Cloud-Foundry%E6%96%87%E6%A1%A3/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Cloud Foundry组件]]></title>

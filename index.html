@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        6
+        7
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -135,6 +135,96 @@ var _hmt = _hmt || [];
   </div>
 </aside>
       <section id="main">
+      <article id="post-Cloud-Foundry应用程序打包流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/16/Cloud-Foundry应用程序打包流程/">Cloud Foundry应用程序打包流程</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2015/07/16/Cloud-Foundry应用程序打包流程/">
+    <time datetime="2015-07-16T09:29:14.000Z" itemprop="datePublished">2015年07月16日</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <p><img src="/img/app_push_flow_diagram.png" alt="应用程序预处理时序图"></p>
+<ol>
+<li>在命令行里，开发人员进入应用程序的目录并使用cf命令行工具执行<code>cf push</code>命令。</li>
+<li>此命令会通知Cloud Controller为此应用程序创建记录信息。</li>
+<li>Cloud Controller保存应用程序的元数据信息(例如：应用程序名称，用户定义的实例数量和buildpack)。</li>
+<li>此命令会上传应用程序文件。</li>
+<li>Cloud Controller在大数据存储中存储应用程序的字节文件。</li>
+<li>此命令会发起应用程序启动指令。</li>
+<li>由于此应用程序未被打包过，Cloud Controller就会在DEA池里面选择一个合适的DEA实例来打包应用程序。DEA会根据buildpack来打包应用程序。</li>
+<li>DEA打包过程中会输出所有的打包信息以便开发人员做故障排除。</li>
+<li>应用程序打包好之后会成为一个“droplet”，存储在大数据存储之中。结果会被缓存下来以供下次直接使用。</li>
+<li>DEA打包通知Cloud Controller打包完成。</li>
+<li>Cloud Controller会从DEA池中选择一个或者多个来运行已经打包好的应用程序。</li>
+<li>运行着的DEA会时刻通知Cloud Controller应用程序的状态。</li>
+</ol>
+
+      
+    </div>
+
+    
+    <footer class="article-footer">
+      <!-- 原分享代码 
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry应用程序打包流程/" data-id="cic602shg0000klx8gn6rhf47" class="article-share-link">分享到</a>
+      -->
+      <!-- 百度分享 -->
+      <div class="bdsharebuttonbox article-baidu-share-link">
+          <a href="#" class="bds_more" data-cmd="more">分享到</a>
+      </div>
+      <script>
+          window._bd_share_config = {
+              "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "16"
+              },
+              "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      </script>
+      <!-- 百度分享结束 -->
+      
+        <!-- 评论
+        <a href="http://wenhao.github.io/2015/07/16/Cloud-Foundry应用程序打包流程/#ds-thread" class="article-comment-link">评论</a>
+        -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud-Foundry/">Cloud Foundry</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
       <article id="post-Cloud-Foundry组件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -200,7 +290,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-id="cic5ynylv000x4px8n1ialf4a" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-id="cic60017m0011j5x805lx24ta" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -280,7 +370,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry概述/" data-id="cic5ynyl200004px8wgfvacwe" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry概述/" data-id="cic6001700000j5x83f1uy7dz" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -369,7 +459,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="cic5ynyll000a4px8tnak5vui" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="cic60017b000aj5x8d2cd1fku" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -457,7 +547,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cic5ynylr000m4px8076j6oay" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cic60017h000mj5x8zgulzjif" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -547,7 +637,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cic5ynylo000g4px8esbcpjf5" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cic60017f000gj5x8s4s0lhp9" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -628,7 +718,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="cic5ynylt000s4px8g5zwocmd" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="cic60017l000wj5x8tsialkbn" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -672,6 +762,24 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/07/16/Cloud-Foundry应用程序打包流程/" class="thumbnail">
+  
+    <span style="background-image:url(/img/app_push_flow_diagram.png
+)" alt="Cloud Foundry应用程序打包流程" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a></p>
+              <p class="item-title"><a href="/2015/07/16/Cloud-Foundry应用程序打包流程/" class="title">Cloud Foundry应用程序打包流程</a></p>
+              <p class="item-date"><time datetime="2015-07-16T09:29:14.000Z" itemprop="datePublished">2015年07月16日</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -743,24 +851,6 @@ var _hmt = _hmt || [];
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/07/06/微服务利弊权衡/" class="thumbnail">
-  
-    <span style="background-image:url(/img/microservice.png
-)" alt="微服务利弊权衡" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/翻译/">翻译</a></p>
-              <p class="item-title"><a href="/2015/07/06/微服务利弊权衡/" class="title">微服务利弊权衡</a></p>
-              <p class="item-date"><time datetime="2015-07-06T04:14:31.000Z" itemprop="datePublished">2015年07月6日</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -770,7 +860,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -779,7 +869,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry/">Cloud Foundry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry/">Cloud Foundry</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -788,7 +878,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cloud-Foundry/" style="font-size: 10px;">Cloud Foundry</a> <a href="/tags/Cloud-Foundry文档/" style="font-size: 10px;">Cloud Foundry文档</a> <a href="/tags/Martin-Fowler/" style="font-size: 10px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Cloud-Foundry/" style="font-size: 15px;">Cloud Foundry</a> <a href="/tags/Cloud-Foundry文档/" style="font-size: 10px;">Cloud Foundry文档</a> <a href="/tags/Martin-Fowler/" style="font-size: 10px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -797,7 +887,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
