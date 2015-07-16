@@ -3,17 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/6 | 源代码</title>
+  <title>Cloud Foundry组件 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="源代码">
-<meta property="og:url" content="http://wenhao.github.io/archives/2015/06/index.html">
+  <meta name="description" content="Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。
+更多关于Cloud Foundry组件信息可以查看下图。某些描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cloud Foundry组件">
+<meta property="og:url" content="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/index.html">
 <meta property="og:site_name" content="源代码">
-<meta property="og:description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
+<meta property="og:description" content="Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。
+更多关于Cloud Foundry组件信息可以查看下图。某些描述">
+<meta property="og:image" content="http://wenhao.github.io/img/cf_architecture_block.png">
+<meta property="og:updated_time" content="2015-07-16T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="源代码">
-<meta name="twitter:description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
+<meta name="twitter:title" content="Cloud Foundry组件">
+<meta name="twitter:description" content="Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。
+更多关于Cloud Foundry组件信息可以查看下图。某些描述">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -134,47 +139,130 @@ var _hmt = _hmt || [];
     
   </div>
 </aside>
-      <section id="main">
-      <div class="archive-year-wrap">
-        <a href="/archives/2015" class="archive-year">2015</a>
-      </div>
-      <section class="archives-wrap">
-        <div class="archives">
+      <section id="main"><article id="post-Cloud-Foundry组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
     
-    <div class="archive-article-thumbnail">
-      <a href="/2015/06/09/互联网/" class="thumbnail">
-  
-    <span style="background-image:url(/img/互联网+.jpg
-)" alt="互联网+" class="thumbnail-image"></span>
-  
-</a>
-    </div>
     
-    <header class="archive-article-header">
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/09/互联网/">互联网+</a>
+    <h1 class="article-title" itemprop="name">
+      Cloud Foundry组件
     </h1>
   
 
-      
-        <div class="archive-article-date">
+        <div class="article-meta">
+          <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/06/09/互联网/">
-    <time datetime="2015-06-09T01:13:41.000Z" itemprop="datePublished">6月 9</time>
+  <a href="/2015/07/16/Cloud-Foundry组件/">
+    <time datetime="2015-07-16T08:52:40.000Z" itemprop="datePublished">2015年07月16日</time>
   </a>
 </div>
-      
-    </header>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a>
   </div>
-</article>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <p>Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。</p>
+<p>更多关于Cloud Foundry组件信息可以查看下图。某些描述信息还链接到更为详细的文档。</p>
+<p><img src="/img/cf_architecture_block.png" alt="Cloud Foundry架构"></p>
+<h3 id="路由">路由</h3><p><a href="http://docs.cloudfoundry.org/concepts/architecture/router.html" target="_blank" rel="external">路由</a>分发请求到下一个适当的组件，通常是Cloud Controller或者是运行在DEA节点上的应用程序。</p>
+<h3 id="认证">认证</h3><p>OAuth2(<a href="http://docs.cloudfoundry.org/concepts/architecture/uaa.html" target="_blank" rel="external">UAA</a>)和登陆服务器共同管理认证服务。</p>
+<h3 id="Cloud_Controller">Cloud Controller</h3><p><a href="http://docs.cloudfoundry.org/concepts/architecture/cloud-controller.html" target="_blank" rel="external">Cloud Controller</a>负责管理应用程序的生命周期。当开发人员部署应用程序到Cloud Foundry后，应用程序就被Cloud Controller接管。Cloud Foundry会存储应用程序字节码文件，为应用程序元数据创建跟踪记录，然后分配DEA节点预处理和运行此应用程序。Cloud Foundry也维护组织、空间、服务、服务实例、用户角色等信息。</p>
+<h3 id="HM9000">HM9000</h3><p>HM9000有四个主要的职责：</p>
+<ul>
+<li>监控并获取应用程序的状态(例如：运行、停止和崩溃等), 版本号和实例数量。HM9000会根据运行在DEA上的应用程序的心跳测试和<code>droplet.exited</code>消息状态来更新应用程序的实际状态。</li>
+<li>定义应用程序的预期状态，版本号和实例数量。HM9000可以从Cloud Controller数据库里查询应用程序的预期状态。</li>
+<li>对比实际状态和预期状态，调整应用实例数量。举例来说，如果某个应用程序只有几个实例的运行状态是所期望的，HM9000就会通知Cloud Controller创建并启动对应数量的实例。</li>
+<li>通知Cloud Controller处理任何状态错误的应用程序。</li>
+</ul>
+<p>更多关于HM9000架构的详细信息参见<a href="https://github.com/cloudfoundry/hm9000" target="_blank" rel="external">HM9000 readme</a>。</p>
+<h3 id="应用执行单元(DEA)">应用执行单元(DEA)</h3><p><a href="http://docs.cloudfoundry.org/concepts/architecture/execution-agent.html" target="_blank" rel="external">Droplet 执行代理</a>管理应用程序实例，跟踪任何已启动应用实例并广播应用程序各种状态信息。</p>
+<p>应用程序实例运行在<a href="http://docs.cloudfoundry.org/concepts/architecture/warden.html" target="_blank" rel="external">Warden</a>容器内。集装箱式的架构保证应用程序实例之间相对独立，远离任何共享资源和阻碍其他实例干扰。</p>
+<h3 id="大数据存储">大数据存储</h3><p>大数据存储包括：</p>
+<ul>
+<li>应用程序代码</li>
+<li>Buildpacks</li>
+<li>Droplets</li>
+</ul>
+<h3 id="服务代理">服务代理</h3><p>应用程序通常依赖某些<a href="http://docs.cloudfoundry.org/services/" target="_blank" rel="external">服务</a>例如，数据库或者第三方SaaS提供商。当某个开发人员创建并绑定某个服务到应用程序后，服务代理就会负责创建服务所需要的服务实例。</p>
+<h3 id="消息总线">消息总线</h3><p>Cloud Foundry使用<a href="http://docs.cloudfoundry.org/concepts/architecture/messaging-nats.html" target="_blank" rel="external">NATS</a>，一个轻量级的消息订阅和分发系统，用于组件之间的通信。</p>
+<h3 id="日志与统计">日志与统计</h3><p>度量收集器会收集各个组件的度量信息。管理员可以通过这些信息来监控Cloud Foundry的实例。</p>
+<p>应用程序的日志聚集器会收集并发送应用程序的日志给开发人员。</p>
+
+      
+    </div>
+
+    
+      <div id="article-toc">
+	<div id="article-toc-title">文章目录<div>←</div></div>
+	<div id="article-toc-content">
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由"><span class="toc-number">1.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#认证"><span class="toc-number">2.</span> <span class="toc-text">认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cloud_Controller"><span class="toc-number">3.</span> <span class="toc-text">Cloud Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HM9000"><span class="toc-number">4.</span> <span class="toc-text">HM9000</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用执行单元(DEA)"><span class="toc-number">5.</span> <span class="toc-text">应用执行单元(DEA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大数据存储"><span class="toc-number">6.</span> <span class="toc-text">大数据存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务代理"><span class="toc-number">7.</span> <span class="toc-text">服务代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息总线"><span class="toc-number">8.</span> <span class="toc-text">消息总线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志与统计"><span class="toc-number">9.</span> <span class="toc-text">日志与统计</span></a></li></ol>
+	</div>
+</div>
+    
+    <footer class="article-footer">
+      <!-- 原分享代码 
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-id="cic5ynylv000x4px8n1ialf4a" class="article-share-link">分享到</a>
+      -->
+      <!-- 百度分享 -->
+      <div class="bdsharebuttonbox article-baidu-share-link">
+          <a href="#" class="bds_more" data-cmd="more">分享到</a>
+      </div>
+      <script>
+          window._bd_share_config = {
+              "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "16"
+              },
+              "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      </script>
+      <!-- 百度分享结束 -->
+      
+        <!-- 评论
+        <a href="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/#ds-thread" class="article-comment-link">评论</a>
+        -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud-Foundry文档/">Cloud Foundry文档</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+    </footer>
+  </div>
   
-    </div></section>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/16/Cloud-Foundry概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Cloud Foundry概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-title="Cloud Foundry组件" data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/">
+     </div>
   </section>
+</section>
       
         <aside id="sidebar">
   
