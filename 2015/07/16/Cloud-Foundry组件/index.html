@@ -14,7 +14,7 @@
 <meta property="og:description" content="Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。
 更多关于Cloud Foundry组件信息可以查看下图。某些描述">
 <meta property="og:image" content="http://wenhao.github.io/img/cf_architecture_block.png">
-<meta property="og:updated_time" content="2015-07-16T08:54:51.000Z">
+<meta property="og:updated_time" content="2015-07-17T01:18:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cloud Foundry组件">
 <meta name="twitter:description" content="Cloud Foundry组件包括一个自我服务的应用程序运行引擎，一个自动化的应用程序部署引擎和生命周期管服务，还有一个脚本化的命令行接口(CLI)，同时也提供了一些开发工具来简化整个部署过程。Cloud Foundry整个系统拥有一个开发的架构，包括能够自定义添加框架的buildpack机制，开放的应用服务接口及云服务提供商接口。
@@ -175,6 +175,7 @@ var _hmt = _hmt || [];
 <p>更多关于Cloud Foundry组件信息可以查看下图。某些描述信息还链接到更为详细的文档。</p>
 <p><img src="/img/cf_architecture_block.png" alt="Cloud Foundry架构"></p>
 <h3 id="路由">路由</h3><p><a href="http://docs.cloudfoundry.org/concepts/architecture/router.html" target="_blank" rel="external">路由</a>分发请求到下一个适当的组件，通常是Cloud Controller或者是运行在DEA节点上的应用程序。</p>
+<a id="more"></a>
 <h3 id="认证">认证</h3><p>OAuth2(<a href="http://docs.cloudfoundry.org/concepts/architecture/uaa.html" target="_blank" rel="external">UAA</a>)和登陆服务器共同管理认证服务。</p>
 <h3 id="Cloud_Controller">Cloud Controller</h3><p><a href="http://docs.cloudfoundry.org/concepts/architecture/cloud-controller.html" target="_blank" rel="external">Cloud Controller</a>负责管理应用程序的生命周期。当开发人员部署应用程序到Cloud Foundry后，应用程序就被Cloud Controller接管。Cloud Foundry会存储应用程序字节码文件，为应用程序元数据创建跟踪记录，然后分配DEA节点预处理和运行此应用程序。Cloud Foundry也维护组织、空间、服务、服务实例、用户角色等信息。</p>
 <h3 id="HM9000">HM9000</h3><p>HM9000有四个主要的职责：</p>
