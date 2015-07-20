@@ -18,7 +18,7 @@
 高度的模块边界化：微服务促进系统模块化，对大型团队尤其重要。
 独立部署：简单的服务部署更为容易因为它">
 <meta property="og:image" content="http://wenhao.github.io/img/microservice.png">
-<meta property="og:updated_time" content="2015-07-15T08:22:31.000Z">
+<meta property="og:updated_time" content="2015-07-20T07:27:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务利弊权衡">
 <meta name="twitter:description" content="现在许多开发团队已经意识到微服务架构模式会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能够帮助你做出更加明智的选择。
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 <p>我现在说的这些都是从早期实践过这种架构的人那里听到的一些真实案例。他们的判断是越早关注模块化越有意义。</p>
 <p>有个案例特别有趣。某个团队做了错误的选择了使用微服务架构，但是根据文章<a href="http://martinfowler.com/bliki/MicroservicePremium.html" target="_blank" rel="external">微服务代价</a>来说他们的系统还不够复杂。这个项目出现了问题必须挽救，所以大部分人又加入了此项目。这种情况下，微服务架构可以帮上忙，因为比起单体系统来说微服务可以更容易消化大部分开发人员而且可以把大团队平均分配到各个团队。最终，这个团队效率高于开发单体应用，使团队能够追赶进度。但是任然有负面的影响，比起开发单体应用来说，微服务会花费更多的时间开发同样的功能，但是微服务架构在后期也可以提高效率。</p>
 <p>有个案例特别有趣。某个团队做了错误的选择了使用微服务架构，但是根据文章<a href="http://martinfowler.com/bliki/MicroservicePremium.html" target="_blank" rel="external">微服务代价</a>来说他们的系统还不够复杂。这个项目很快出现了问题需要及时修复，因此一部分新人加入了此项目。对于加新人来说，微服务架构模式可能会起些作用，因为比起单体应用系统来说微服务更容易消化新加入的开发人员，更好的把人员分配到不同的服务团队中。后来，这个团队的开发效率比使用单体应用架构预期的效率要高，使团队能够追赶进度。但是总的来说还是有些影响，使用微服务架构会比使用单体应用架构花费更多的人天，即使这样，微服务架构确实也提高了效率。</p>
-<h3 id="分布式">分布式</h3><p>微服务使用分布式系统来提高模块化。但是分布式系统有个很大的缺点，这个缺点正式“分布式的”。一旦你选择了分布式架构，你就会面临太多的复杂性问题。<a href="http://martinfowler.com/articles/distributed-objects-microservices.html" target="_blank" rel="external">我不认为微服务社区会天真的以为分布式对象会带来额外的成本</a>，但是这种复杂度任然存在。</p>
+<h3 id="分布式">分布式</h3><p>微服务使用分布式系统来提高模块化。但是分布式系统有个很大的缺点，这个缺点正是其“分布式”特性。一旦你选择了分布式架构，你就会面临很多复杂的问题。<a href="http://martinfowler.com/articles/distributed-objects-microservices.html" target="_blank" rel="external">但是我不认为微服务社区有考虑到分布式对象带来额外的成本</a>，但是这种复杂度确实存在。</p>
 <p>第一个问题是性能。你不得不正视功能之间调用的性能最近成为了热点问题，但是远程调用速度很慢。如果你的服务调用多个远程服务，而且每一个服务又调用其他服务，所有的响应时间加起来会变成可怕的潜在隐患。</p>
 <p>当然你可以通过某种方式缓解这个问题。首先你可以增加被调用服务的粒度，你可以只做一些服务。这会使编程模型变得复杂，你不得不考虑批量处理服务之间的调用。这种方法只能达到这种地步，因为一次性你不得不调用所有的关联服务。</p>
 <p>第二种缓解方式是使用异步。如果并行调用六个异步方法，你最慢的速度决定于这六个异步调用中最慢的那个而不是六个异步调用时间总和。这种方式可以获得很大的性能改进，但是同时也会导致另外一个我们所知的问题。异步编程很难：难于实现，也难于调试。但是我听说过的大部分微服务案例表明做异步只是为了达到可以接受的性能指标。</p>
@@ -262,7 +262,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cic60017f000gj5x8s4s0lhp9" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cicblde7g000g56x8eslmb63f" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
