@@ -14,7 +14,7 @@
 <meta property="og:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。">
 <meta property="og:image" content="http://wenhao.github.io/img/geohash.png">
-<meta property="og:updated_time" content="2015-10-21T10:25:41.000Z">
+<meta property="og:updated_time" content="2015-10-21T10:33:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于GeoHash+Redis实现LBS附近地点搜索">
 <meta name="twitter:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
@@ -198,7 +198,8 @@ var _hmt = _hmt || [];
 <p>命令如:</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">db</span><span class="class">.runCommand</span>(&#123; <span class="attribute">geoNear</span>: <span class="string">"places"</span>, <span class="attribute">near</span>: [<span class="number">30.545162</span>, <span class="number">104.062018</span>], <span class="attribute">num</span>:<span class="number">1000</span> &#125;)</span><br></pre></td></tr></table></figure>
 <p>MongoDB支持地理位置查询，可伸缩性较好，配置集群简单，集成方便快，成本最低。3.0版本之后增加了Collection锁，性能大大提升。业界也有不少公司在使用，比如美团、街旁、全球最大的LBS应用<a href="https://foursquare.com/" target="_blank" rel="external">Foursquare</a>用的MongoDB。</p>
-<h5 id="自行开发搜索算法并存入Redis">自行开发搜索算法并存入Redis</h5><h3 id="具体实现">具体实现</h3><ol>
+<h5 id="自行开发搜索算法并存入Redis">自行开发搜索算法并存入Redis</h5><p>自行开发算法精度与扩展方式容易控制，对第三方没有依赖方便升级与替换。</p>
+<h3 id="具体实现">具体实现</h3><ol>
 <li><p>坐标转换成52bit二进制编码值。</p>
 <ul>
 <li>52bit精度在0.6m足够满足搜索范围需求。</li>
