@@ -100,11 +100,11 @@ var _hmt = _hmt || [];
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        8
+        9
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        10
+        12
         <span>标签</span>
       </div>
     </div>
@@ -135,6 +135,120 @@ var _hmt = _hmt || [];
   </div>
 </aside>
       <section id="main">
+      <article id="post-基于GeoHash实现LBS附近地点搜索" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/">基于GeoHash实现LBS附近地点搜索</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/">
+    <time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/geohash/">geohash</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <p><img src="/img/geohash.png" alt="GeoHash"></p>
+<ol>
+<li><p>坐标转换成52bit二进制编码值。</p>
+<ul>
+<li>52bit精度在0.6m足够满足搜索范围需求。</li>
+<li><p>算法，根据经纬度计算GeoHash二进制编码：</p>
+<ul>
+<li>首先将纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。由于39.92324属于(0, 90)，所以取编码为1。然后再将(0, 90)分成 (0, 45), (45, 90)两个区间，而39.92324位于(0, 45)，所以编码为0。以此类推，直到精度符合要求为止，得到纬度编码为1011 1000 1100 0111 1001。</li>
+<li>经度也用同样的算法，对(-180, 180)依次细分，得到116.3906的编码为1101 0010 1100 0100 0100。</li>
+<li>接下来将经度和纬度的编码合并，奇数位是纬度，偶数位是经度，得到编码 11100 11101 00100 01111 00000 01101 01011 00001。    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>估算搜索范围起始值。</p>
+<ul>
+<li>12bit精度为：9775.7m， 11bit精度为：19551.5m ……</li>
+<li>算法, 如果用52位来表示一个坐标, 那么总共有: 2^26 * 2^26 = 2^52 个框:<ul>
+<li>地球半径：radius = 6372797.560856m</li>
+<li>每个框的夹角：angle = 1 / 2^26</li>
+<li>每个框在地球表面的长度: length = 2 <em> π </em> radius * angle</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>给出查询的中心坐标并计算其GeoHash值(52bit)。</p>
+</li>
+<li><p>计算中心坐标相邻的8个坐标(中心坐标在两个框边界会有误差，此规避误差)。</p>
+</li>
+<li><p>加上中心坐标共9个52bit的坐标值，针对每个坐标值参照搜索范围值算出区域值[MIN, MAX]。</p>
+<ul>
+<li>算法：MIN为坐标的搜索指定位起始长度后补零；MAX为坐标的搜索指定位终止长度后补壹。</li>
+</ul>
+</li>
+<li><p>使用Redis命令ZRANGEBYSCORE key MIN MAX WITHSCORES查找。</p>
+</li>
+<li><p>避免误差按照距离公式在将所有结果过滤一次(GeoHash反坐标再计算距离)。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    <footer class="article-footer">
+      <!-- 原分享代码 
+      <a data-url="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/" data-id="cig0ikqm1000ry4yz9e870vu2" class="article-share-link">分享到</a>
+      -->
+      <!-- 百度分享 -->
+      <div class="bdsharebuttonbox article-baidu-share-link">
+          <a href="#" class="bds_more" data-cmd="more">分享到</a>
+      </div>
+      <script>
+          window._bd_share_config = {
+              "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "16"
+              },
+              "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      </script>
+      <!-- 百度分享结束 -->
+      
+        <!-- 评论
+        <a href="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/#ds-thread" class="article-comment-link">评论</a>
+        -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geohash/">geohash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lbs/">lbs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
       <article id="post-spring和kafka集成" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,7 +296,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/10/02/spring和kafka集成/" data-id="cif91j0ra0000esyza33jf958" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/10/02/spring和kafka集成/" data-id="cig0ikqm50013y4yzgjnkmrfs" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -265,7 +379,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry应用程序打包流程/" data-id="cif91crwv0017bhyzs68wyv0l" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry应用程序打包流程/" data-id="cig0ikqnb001jy4yz8v0cw0gt" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -347,7 +461,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-id="cif91crwq000wbhyzoc0q7zlb" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry组件/" data-id="cig0ikqm80018y4yzhf2wigae" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -428,7 +542,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry概述/" data-id="cif91crws0012bhyzbz916nhu" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/16/Cloud-Foundry概述/" data-id="cig0ikqma001ey4yzpa6krqs6" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -517,7 +631,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="cif91crwd0008bhyzxvrgy9kz" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="cig0ikqlv0008y4yzzj1ub2fp" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -605,7 +719,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cif91crwh000lbhyz5cqfetu8" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cig0ikqm0000ly4yz9u492tth" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -695,7 +809,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cif91crwf000fbhyz81kg3g9v" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="cig0ikqlx000fy4yz7b4dwa3f" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -776,7 +890,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="cif91crwj000rbhyzybrqjswn" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="cig0ikqm3000yy4yzhohi85ij" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -820,6 +934,24 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/" class="thumbnail">
+  
+    <span style="background-image:url(/img/geohash.png
+)" alt="基于GeoHash实现LBS附近地点搜索" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/geohash/">geohash</a></p>
+              <p class="item-title"><a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/" class="title">基于GeoHash实现LBS附近地点搜索</a></p>
+              <p class="item-date"><time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -892,23 +1024,6 @@ var _hmt = _hmt || [];
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/07/09/接口无益/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/翻译/">翻译</a></p>
-              <p class="item-title"><a href="/2015/07/09/接口无益/" class="title">接口无益</a></p>
-              <p class="item-date"><time datetime="2015-07-09T09:36:47.000Z" itemprop="datePublished">2015年07月9日</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -918,7 +1033,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -927,7 +1042,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry/">Cloud Foundry</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry/">Cloud Foundry</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Foundry文档/">Cloud Foundry文档</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -936,7 +1051,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cloud-Foundry/" style="font-size: 15px;">Cloud Foundry</a> <a href="/tags/Cloud-Foundry文档/" style="font-size: 10px;">Cloud Foundry文档</a> <a href="/tags/Martin-Fowler/" style="font-size: 10px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Cloud-Foundry/" style="font-size: 15px;">Cloud Foundry</a> <a href="/tags/Cloud-Foundry文档/" style="font-size: 10px;">Cloud Foundry文档</a> <a href="/tags/Martin-Fowler/" style="font-size: 10px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -945,7 +1060,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
