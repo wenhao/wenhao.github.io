@@ -8,7 +8,7 @@
   <meta name="description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 解决方案
 物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。
-存于MySQL，根据纬">
+基于MySQL，可选择">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于GeoHash实现LBS附近地点搜索">
 <meta property="og:url" content="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/index.html">
@@ -16,15 +16,15 @@
 <meta property="og:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 解决方案
 物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。
-存于MySQL，根据纬">
+基于MySQL，可选择">
 <meta property="og:image" content="http://wenhao.github.io/img/geohash.png">
-<meta property="og:updated_time" content="2015-10-21T09:32:35.000Z">
+<meta property="og:updated_time" content="2015-10-21T10:06:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于GeoHash实现LBS附近地点搜索">
 <meta name="twitter:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 解决方案
 物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。
-存于MySQL，根据纬">
+基于MySQL，可选择">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -181,11 +181,24 @@ var _hmt = _hmt || [];
 <h3 id="需求">需求</h3><p>随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。</p>
 <h3 id="解决方案">解决方案</h3><ol>
 <li>物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。</li>
-<li>存于MySQL，根据纬度和精度每增加0.01度增加1000m为算法，检索出候选坐标，再根据搜索范围刷选。</li>
-<li>存入MongoDB，依赖MongoDB的空间搜索算法搜索。</li>
+<li>基于MySQL，可选择物理计算/GeoHash/MySQL空间索引。</li>
+<li>基于MongoDB，依赖MongoDB的空间搜索算法搜索。</li>
 <li>自行开发搜索算法并存入Redis。</li>
 </ol>
-<h3 id="具体实现">具体实现</h3><ol>
+<h3 id="方案解析">方案解析</h3><h4 id="物理计算">物理计算</h4><p>在我们第一次遇到这类问题，头脑里面最先浮现的解决方案，但是我们的潜意思告诉我们这肯定是不行的。如果搜索的受众量很大，光是计算距离就要消耗大量的时间。</p>
+<h4 id="基于MySQL">基于MySQL</h4><p>存入MySQL实现上有三种方式：</p>
+<ol>
+<li><p>根据纬度和精度每增加0.01度增加1000m为算法，检索出候选坐标，再根据搜索范围刷选。距离搜索3公里以内所有目标，伪代码：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> kilometer = <span class="number">3.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> precision = <span class="number">0.01</span> * kilometer;</span><br><span class="line"></span><br><span class="line"><span class="comment">//SQL 限定条件 </span></span><br><span class="line">SELECT * FROM driver_coordinate</span><br><span class="line">WHERE latitude &gt; latitude - precision &amp;&amp; </span><br><span class="line">      latitude &lt; latitude + precision &amp;&amp;</span><br><span class="line">      longitude &gt; longitude - precisionRadius &amp;&amp; </span><br><span class="line">      longitude &lt; longitude + precisionRadius;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给每一个坐标计算一个<a href="https://en.wikipedia.org/wiki/Geohash" target="_blank" rel="external">GeoHash</a>值，业界大部分的使用的是基于Base32编码的12为GeoHash字符串。但是这样精度不太容易控制。我们将要讨论的是52位的整形值来表示GeoHash。52位的GeoHash最小能精确到0.6米，足够满足绝大部分需求(52位GeoHash算法见下文)。</p>
+</li>
+<li><p>MySQL空间存储，MySQL本省就支持空间搜索。</p>
+ <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLength<span class="list">(<span class="keyword">LineStringFromWKB</span><span class="list">(<span class="keyword">LineString</span><span class="list">(<span class="keyword">point1</span>, point2)</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但是由于MySQL的限制，性能还是不够高。</p>
+<h4 id="基于MongoDB">基于MongoDB</h4><h3 id="具体实现">具体实现</h3><ol>
 <li><p>坐标转换成52bit二进制编码值。</p>
 <ul>
 <li>52bit精度在0.6m足够满足搜索范围需求。</li>
@@ -231,7 +244,7 @@ var _hmt = _hmt || [];
       <div id="article-toc">
 	<div id="article-toc-title">文章目录<div>←</div></div>
 	<div id="article-toc-content">
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现"><span class="toc-number">3.</span> <span class="toc-text">具体实现</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案解析"><span class="toc-number">3.</span> <span class="toc-text">方案解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#物理计算"><span class="toc-number">3.1.</span> <span class="toc-text">物理计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于MySQL"><span class="toc-number">3.2.</span> <span class="toc-text">基于MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于MongoDB"><span class="toc-number">3.3.</span> <span class="toc-text">基于MongoDB</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现"><span class="toc-number">4.</span> <span class="toc-text">具体实现</span></a></li></ol>
 	</div>
 </div>
     
