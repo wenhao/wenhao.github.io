@@ -5,32 +5,32 @@
   
   <title>基于GeoHash实现LBS附近地点搜索 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="坐标转换成52bit二进制编码值。
+  <meta name="description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
+
+坐标转换成52bit二进制编码值。
 
 52bit精度在0.6m足够满足搜索范围需求。
-算法，根据经纬度计算GeoHash二进制编码：
-
-首先将纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。由于39.92324属于(0, 90)，所以取编码为1。然后再将(0, 90)分成 (0, 45), (45, 90)两个区间，">
+算法，根">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于GeoHash实现LBS附近地点搜索">
 <meta property="og:url" content="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/index.html">
 <meta property="og:site_name" content="源代码">
-<meta property="og:description" content="坐标转换成52bit二进制编码值。
+<meta property="og:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
+
+坐标转换成52bit二进制编码值。
 
 52bit精度在0.6m足够满足搜索范围需求。
-算法，根据经纬度计算GeoHash二进制编码：
-
-首先将纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。由于39.92324属于(0, 90)，所以取编码为1。然后再将(0, 90)分成 (0, 45), (45, 90)两个区间，">
+算法，根">
 <meta property="og:image" content="http://wenhao.github.io/img/geohash.png">
-<meta property="og:updated_time" content="2015-10-21T08:03:25.000Z">
+<meta property="og:updated_time" content="2015-10-21T09:25:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于GeoHash实现LBS附近地点搜索">
-<meta name="twitter:description" content="坐标转换成52bit二进制编码值。
+<meta name="twitter:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
+
+坐标转换成52bit二进制编码值。
 
 52bit精度在0.6m足够满足搜索范围需求。
-算法，根据经纬度计算GeoHash二进制编码：
-
-首先将纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。由于39.92324属于(0, 90)，所以取编码为1。然后再将(0, 90)分成 (0, 45), (45, 90)两个区间，">
+算法，根">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -184,6 +184,7 @@ var _hmt = _hmt || [];
       
 
         <p><img src="/img/geohash.png" alt="GeoHash"></p>
+<h3 id="需求">需求</h3><p>随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。</p>
 <ol>
 <li><p>坐标转换成52bit二进制编码值。</p>
 <ul>
@@ -230,7 +231,7 @@ var _hmt = _hmt || [];
       <div id="article-toc">
 	<div id="article-toc-title">文章目录<div>←</div></div>
 	<div id="article-toc-content">
-		
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li></ol>
 	</div>
 </div>
     
