@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>基于GeoHash实现LBS附近地点搜索 | 源代码</title>
+  <title>基于GeoHash+Redis实现LBS附近地点搜索 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于GeoHash实现LBS附近地点搜索">
-<meta property="og:url" content="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/index.html">
+<meta property="og:title" content="基于GeoHash+Redis实现LBS附近地点搜索">
+<meta property="og:url" content="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/index.html">
 <meta property="og:site_name" content="源代码">
 <meta property="og:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。">
 <meta property="og:image" content="http://wenhao.github.io/img/geohash.png">
-<meta property="og:updated_time" content="2015-10-21T10:23:36.000Z">
+<meta property="og:updated_time" content="2015-10-21T10:25:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于GeoHash实现LBS附近地点搜索">
+<meta name="twitter:title" content="基于GeoHash+Redis实现LBS附近地点搜索">
 <meta name="twitter:description" content="需求随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。
 先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。">
   
@@ -139,7 +139,7 @@ var _hmt = _hmt || [];
     
   </div>
 </aside>
-      <section id="main"><article id="post-基于GeoHash实现LBS附近地点搜索" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-基于GeoHash+Redis实现LBS附近地点搜索" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -148,14 +148,14 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      基于GeoHash实现LBS附近地点搜索
+      基于GeoHash+Redis实现LBS附近地点搜索
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/">
+  <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">
     <time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time>
   </a>
 </div>
@@ -250,7 +250,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/" data-id="cig0nii3l000rdpyzlcdqesbi" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" data-id="cig0nnnjl0000k7yzycg2jlj8" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
       <!-- 百度分享结束 -->
       
         <!-- 评论
-        <a href="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/#ds-thread" class="article-comment-link">评论</a>
         -->
       
       
@@ -298,7 +298,7 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/" data-title="基于GeoHash实现LBS附近地点搜索" data-url="http://wenhao.github.io/2015/10/21/基于GeoHash实现LBS附近地点搜索/">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" data-title="基于GeoHash+Redis实现LBS附近地点搜索" data-url="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">
      </div>
   </section>
 </section>
@@ -314,17 +314,17 @@ var _hmt = _hmt || [];
           <li>
             
             <div class="item-thumbnail">
-              <a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/" class="thumbnail">
+              <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="thumbnail">
   
     <span style="background-image:url(/img/geohash.png
-)" alt="基于GeoHash实现LBS附近地点搜索" class="thumbnail-image"></span>
+)" alt="基于GeoHash+Redis实现LBS附近地点搜索" class="thumbnail-image"></span>
   
 </a>
             </div>
             
             <div class="item-inner">
               <p class="item-category"><a class="article-category-link" href="/categories/geohash/">geohash</a></p>
-              <p class="item-title"><a href="/2015/10/21/基于GeoHash实现LBS附近地点搜索/" class="title">基于GeoHash实现LBS附近地点搜索</a></p>
+              <p class="item-title"><a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="title">基于GeoHash+Redis实现LBS附近地点搜索</a></p>
               <p class="item-date"><time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time></p>
             </div>
           </li>
