@@ -5,7 +5,7 @@
   <subtitle><![CDATA[敏捷, 持续交付, 微服务, 重构, 大数据, Java]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
-  <updated>2015-10-21T10:33:25.000Z</updated>
+  <updated>2015-10-22T03:06:44.000Z</updated>
   <id>http://wenhao.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wenhao.github.io/2015/10/21/%E5%9F%BA%E4%BA%8EGeoHash+Redis%E5%AE%9E%E7%8E%B0LBS%E9%99%84%E8%BF%91%E5%9C%B0%E7%82%B9%E6%90%9C%E7%B4%A2/"/>
     <id>http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/</id>
     <published>2015-10-21T07:55:27.000Z</published>
-    <updated>2015-10-21T10:33:25.000Z</updated>
+    <updated>2015-10-22T03:06:44.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/img/geohash.png" alt="GeoHash"></p>
 <h3 id="需求">需求</h3><p>随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。</p>
 <p>先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。</p>
@@ -57,17 +57,242 @@
 <ul>
 <li>首先将纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。由于39.92324属于(0, 90)，所以取编码为1。然后再将(0, 90)分成 (0, 45), (45, 90)两个区间，而39.92324位于(0, 45)，所以编码为0。以此类推，直到精度符合要求为止，得到纬度编码为1011 1000 1100 0111 1001。</li>
 <li>经度也用同样的算法，对(-180, 180)依次细分，得到116.3906的编码为1101 0010 1100 0100 0100。</li>
-<li>接下来将经度和纬度的编码合并，奇数位是纬度，偶数位是经度，得到编码 11100 11101 00100 01111 00000 01101 01011 00001。    </li>
+<li>接下来将经度和纬度的编码合并，奇数位是纬度，偶数位是经度，得到编码 11100 11101 00100 01111 00000 01101 01011 00001。   </li>
 </ul>
+<p>```java<br>//<a href="https://github.com/wenhao/geohash" target="_blank" rel="external">https://github.com/wenhao/geohash</a><br>package com.github.wenhao.geohash;</p>
+<p>import java.util.Arrays;<br>import java.util.List;</p>
+<p>import com.github.wenhao.geohash.domain.Coordinate;</p>
+<p>public class GeoHash {</p>
+<p>  private static final int MAX_PRECISION = 52;<br>  private static final long FIRST_BIT_FLAGGED = 0x8000000000000L;<br>  private long bits = 0;<br>  private byte significantBits = 0;<br>  private Coordinate coordinate;</p>
+<p>  public GeoHash() {<br>  }</p>
+<p>  public GeoHash(double latitude, double longitude) {</p>
+<pre><code>this<span class="list">(<span class="keyword">latitude</span>, longitude, MAX_PRECISION)</span><span class="comment">;</span>
+</code></pre><p>  }</p>
+<p>  public GeoHash(double latitude, double longitude, int precision) {</p>
+<pre><code><span class="keyword">this</span>.coordinate = <span class="keyword">new</span> Coordinate(latitude, longitude);
+<span class="keyword">boolean</span> isEvenBit = <span class="keyword">true</span>;
+<span class="keyword">double</span>[] latitudeRange = {-<span class="number">90</span>, <span class="number">90</span>};
+<span class="keyword">double</span>[] longitudeRange = {-<span class="number">180</span>, <span class="number">180</span>};
+
+<span class="keyword">while</span> (significantBits &lt; precision) {
+    <span class="keyword">if</span> (isEvenBit) {
+        divideRangeEncode(longitude, longitudeRange);
+    } <span class="keyword">else</span> {
+        divideRangeEncode(latitude, latitudeRange);
+    }
+    isEvenBit = !isEvenBit;
+}
+bits &lt;&lt;= (MAX_PRECISION - precision);
+</code></pre><p>  }</p>
 </li>
 </ul>
 </li>
+</ol>
+<pre><code>    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> GeoHash <span class="title">fromLong</span>(<span class="params"><span class="keyword">long</span> longValue</span>) </span>{
+        <span class="keyword">return</span> fromLong(longValue, MAX_PRECISION);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> GeoHash <span class="title">fromLong</span>(<span class="params"><span class="keyword">long</span> longValue, <span class="keyword">int</span> significantBits</span>) </span>{
+        <span class="keyword">double</span>[] latitudeRange = {-<span class="number">90.0</span>, <span class="number">90.0</span>};
+        <span class="keyword">double</span>[] longitudeRange = {-<span class="number">180.0</span>, <span class="number">180.0</span>};
+
+        boolean isEvenBit = <span class="keyword">true</span>;
+        GeoHash geoHash = <span class="keyword">new</span> GeoHash();
+
+        String binaryString = Long.toBinaryString(longValue);
+        <span class="keyword">while</span> (binaryString.length() &lt; MAX_PRECISION) {
+            binaryString = <span class="string">"0"</span> + binaryString;
+        }
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; significantBits; j++) {
+            <span class="keyword">if</span> (isEvenBit) {
+                divideRangeDecode(geoHash, longitudeRange, binaryString.charAt(j) != <span class="string">'0'</span>);
+            } <span class="keyword">else</span> {
+                divideRangeDecode(geoHash, latitudeRange, binaryString.charAt(j) != <span class="string">'0'</span>);
+            }
+            isEvenBit = !isEvenBit;
+        }
+
+        <span class="keyword">double</span> latitude = (latitudeRange[<span class="number">0</span>] + latitudeRange[<span class="number">1</span>]) / <span class="number">2</span>;
+        <span class="keyword">double</span> longitude = (longitudeRange[<span class="number">0</span>] + longitudeRange[<span class="number">1</span>]) / <span class="number">2</span>;
+
+        geoHash.coordinate = <span class="keyword">new</span> Coordinate(latitude, longitude);
+        geoHash.bits &lt;&lt;= (MAX_PRECISION - geoHash.significantBits);
+        <span class="keyword">return</span> geoHash;
+    }
+
+    <span class="function"><span class="keyword">public</span> List&lt;GeoHash&gt; <span class="title">getAdjacent</span>(<span class="params"></span>) </span>{
+        GeoHash northern = getNorthernNeighbour();
+        GeoHash eastern = getEasternNeighbour();
+        GeoHash southern = getSouthernNeighbour();
+        GeoHash western = getWesternNeighbour();
+        <span class="keyword">return</span> Arrays.asList(northern, northern.getEasternNeighbour(), eastern, southern.getEasternNeighbour(),
+                southern, southern.getWesternNeighbour(), western, northern.getWesternNeighbour());
+    }
+
+    <span class="function"><span class="keyword">private</span> GeoHash <span class="title">getNorthernNeighbour</span>(<span class="params"></span>) </span>{
+        <span class="keyword">long</span>[] latitudeBits = getRightAlignedLatitudeBits();
+        <span class="keyword">long</span>[] longitudeBits = getRightAlignedLongitudeBits();
+        latitudeBits[<span class="number">0</span>] += <span class="number">1</span>;
+        latitudeBits[<span class="number">0</span>] = maskLastNBits(latitudeBits[<span class="number">0</span>], latitudeBits[<span class="number">1</span>]);
+        <span class="keyword">return</span> recombineLatLonBitsToHash(latitudeBits, longitudeBits);
+    }
+
+    <span class="function"><span class="keyword">private</span> GeoHash <span class="title">getSouthernNeighbour</span>(<span class="params"></span>) </span>{
+        <span class="keyword">long</span>[] latitudeBits = getRightAlignedLatitudeBits();
+        <span class="keyword">long</span>[] longitudeBits = getRightAlignedLongitudeBits();
+        latitudeBits[<span class="number">0</span>] -= <span class="number">1</span>;
+        latitudeBits[<span class="number">0</span>] = maskLastNBits(latitudeBits[<span class="number">0</span>], latitudeBits[<span class="number">1</span>]);
+        <span class="keyword">return</span> recombineLatLonBitsToHash(latitudeBits, longitudeBits);
+    }
+
+    <span class="function"><span class="keyword">private</span> GeoHash <span class="title">getEasternNeighbour</span>(<span class="params"></span>) </span>{
+        <span class="keyword">long</span>[] latitudeBits = getRightAlignedLatitudeBits();
+        <span class="keyword">long</span>[] longitudeBits = getRightAlignedLongitudeBits();
+        longitudeBits[<span class="number">0</span>] += <span class="number">1</span>;
+        longitudeBits[<span class="number">0</span>] = maskLastNBits(longitudeBits[<span class="number">0</span>], longitudeBits[<span class="number">1</span>]);
+        <span class="keyword">return</span> recombineLatLonBitsToHash(latitudeBits, longitudeBits);
+    }
+
+    <span class="function"><span class="keyword">private</span> GeoHash <span class="title">getWesternNeighbour</span>(<span class="params"></span>) </span>{
+        <span class="keyword">long</span>[] latitudeBits = getRightAlignedLatitudeBits();
+        <span class="keyword">long</span>[] longitudeBits = getRightAlignedLongitudeBits();
+        longitudeBits[<span class="number">0</span>] -= <span class="number">1</span>;
+        longitudeBits[<span class="number">0</span>] = maskLastNBits(longitudeBits[<span class="number">0</span>], longitudeBits[<span class="number">1</span>]);
+        <span class="keyword">return</span> recombineLatLonBitsToHash(latitudeBits, longitudeBits);
+    }
+
+    <span class="function"><span class="keyword">private</span> GeoHash <span class="title">recombineLatLonBitsToHash</span>(<span class="params"><span class="keyword">long</span>[] latBits, <span class="keyword">long</span>[] lonBits</span>) </span>{
+        GeoHash geoHash = <span class="keyword">new</span> GeoHash();
+        boolean isEvenBit = <span class="keyword">false</span>;
+        latBits[<span class="number">0</span>] &lt;&lt;= (MAX_PRECISION - latBits[<span class="number">1</span>]);
+        lonBits[<span class="number">0</span>] &lt;&lt;= (MAX_PRECISION - lonBits[<span class="number">1</span>]);
+        <span class="keyword">double</span>[] latitudeRange = {-<span class="number">90.0</span>, <span class="number">90.0</span>};
+        <span class="keyword">double</span>[] longitudeRange = {-<span class="number">180.0</span>, <span class="number">180.0</span>};
+
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; latBits[<span class="number">1</span>] + lonBits[<span class="number">1</span>]; i++) {
+            <span class="keyword">if</span> (isEvenBit) {
+                divideRangeDecode(geoHash, latitudeRange, (latBits[<span class="number">0</span>] &amp; FIRST_BIT_FLAGGED) == FIRST_BIT_FLAGGED);
+                latBits[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>;
+            } <span class="keyword">else</span> {
+                divideRangeDecode(geoHash, longitudeRange, (lonBits[<span class="number">0</span>] &amp; FIRST_BIT_FLAGGED) == FIRST_BIT_FLAGGED);
+                lonBits[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>;
+            }
+            isEvenBit = !isEvenBit;
+        }
+        geoHash.bits &lt;&lt;= (MAX_PRECISION - geoHash.significantBits);
+        geoHash.coordinate = getCenterCoordinate(latitudeRange, longitudeRange);
+        <span class="keyword">return</span> geoHash;
+    }
+
+    <span class="keyword">private</span> <span class="keyword">long</span>[] getRightAlignedLatitudeBits() {
+        <span class="keyword">long</span> copyOfBits = bits &lt;&lt; <span class="number">1</span>;
+        <span class="keyword">long</span> <span class="keyword">value</span> = extractEverySecondBit(copyOfBits, getNumberOfLatLonBits()[<span class="number">0</span>]);
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">long</span>[]{<span class="keyword">value</span>, getNumberOfLatLonBits()[<span class="number">0</span>]};
+    }
+
+    <span class="keyword">private</span> <span class="keyword">long</span>[] getRightAlignedLongitudeBits() {
+        <span class="keyword">long</span> copyOfBits = bits;
+        <span class="keyword">long</span> <span class="keyword">value</span> = extractEverySecondBit(copyOfBits, getNumberOfLatLonBits()[<span class="number">1</span>]);
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">long</span>[]{<span class="keyword">value</span>, getNumberOfLatLonBits()[<span class="number">1</span>]};
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">extractEverySecondBit</span>(<span class="params"><span class="keyword">long</span> copyOfBits, <span class="keyword">int</span> numberOfBits</span>) </span>{
+        <span class="keyword">long</span> <span class="keyword">value</span> = <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numberOfBits; i++) {
+            <span class="keyword">if</span> ((copyOfBits &amp; FIRST_BIT_FLAGGED) == FIRST_BIT_FLAGGED) {
+                <span class="keyword">value</span> |= <span class="number">0x1</span>;
+            }
+            <span class="keyword">value</span> &lt;&lt;= <span class="number">1</span>;
+            copyOfBits &lt;&lt;= <span class="number">2</span>;
+        }
+        <span class="keyword">value</span> &gt;&gt;&gt;= <span class="number">1</span>;
+        <span class="keyword">return</span> <span class="keyword">value</span>;
+    }
+
+    <span class="function"><span class="keyword">private</span> Coordinate <span class="title">getCenterCoordinate</span>(<span class="params"><span class="keyword">double</span>[] latitudeRange, <span class="keyword">double</span>[] longitudeRange</span>) </span>{
+        <span class="keyword">double</span> minLon = Math.min(longitudeRange[<span class="number">0</span>], longitudeRange[<span class="number">1</span>]);
+        <span class="keyword">double</span> maxLon = Math.max(longitudeRange[<span class="number">0</span>], longitudeRange[<span class="number">1</span>]);
+        <span class="keyword">double</span> minLat = Math.min(latitudeRange[<span class="number">0</span>], latitudeRange[<span class="number">1</span>]);
+        <span class="keyword">double</span> maxLat = Math.max(latitudeRange[<span class="number">0</span>], latitudeRange[<span class="number">1</span>]);
+        <span class="keyword">double</span> centerLatitude = (minLat + maxLat) / <span class="number">2</span>;
+        <span class="keyword">double</span> centerLongitude = (minLon + maxLon) / <span class="number">2</span>;
+        <span class="keyword">return</span> <span class="keyword">new</span> Coordinate(centerLatitude, centerLongitude);
+    }
+
+    <span class="keyword">private</span> <span class="keyword">int</span>[] getNumberOfLatLonBits() {
+        <span class="keyword">if</span> (significantBits % <span class="number">2</span> == <span class="number">0</span>) {
+            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]{significantBits / <span class="number">2</span>, significantBits / <span class="number">2</span>};
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]{significantBits / <span class="number">2</span>, significantBits / <span class="number">2</span> + <span class="number">1</span>};
+        }
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">maskLastNBits</span>(<span class="params"><span class="keyword">long</span> <span class="keyword">value</span>, <span class="keyword">long</span> n</span>) </span>{
+        <span class="keyword">long</span> mask = <span class="number">0xffffffffffffffff</span>l;
+        mask &gt;&gt;&gt;= (MAX_PRECISION - n);
+        <span class="keyword">return</span> <span class="keyword">value</span> &amp; mask;
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">divideRangeEncode</span>(<span class="params"><span class="keyword">double</span> <span class="keyword">value</span>, <span class="keyword">double</span>[] range</span>) </span>{
+        <span class="keyword">double</span> mid = (range[<span class="number">0</span>] + range[<span class="number">1</span>]) / <span class="number">2</span>;
+        <span class="keyword">if</span> (<span class="keyword">value</span> &gt;= mid) {
+            addOnBitToEnd();
+            range[<span class="number">0</span>] = mid;
+        } <span class="keyword">else</span> {
+            addOffBitToEnd();
+            range[<span class="number">1</span>] = mid;
+        }
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">divideRangeDecode</span>(<span class="params">GeoHash geoHash, <span class="keyword">double</span>[] range, boolean b</span>) </span>{
+        <span class="keyword">double</span> mid = (range[<span class="number">0</span>] + range[<span class="number">1</span>]) / <span class="number">2</span>;
+        <span class="keyword">if</span> (b) {
+            geoHash.addOnBitToEnd();
+            range[<span class="number">0</span>] = mid;
+        } <span class="keyword">else</span> {
+            geoHash.addOffBitToEnd();
+            range[<span class="number">1</span>] = mid;
+        }
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addOnBitToEnd</span>(<span class="params"></span>) </span>{
+        significantBits++;
+        bits &lt;&lt;= <span class="number">1</span>;
+        bits = bits | <span class="number">0x1</span>;
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addOffBitToEnd</span>(<span class="params"></span>) </span>{
+        significantBits++;
+        bits &lt;&lt;= <span class="number">1</span>;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">toLong</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> bits;
+    }
+
+    <span class="function"><span class="keyword">public</span> Coordinate <span class="title">coordinate</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> coordinate;
+    }
+
+    @<span class="function">Override
+    <span class="keyword">public</span> String <span class="title">toString</span>(<span class="params"></span>) </span>{
+        <span class="keyword">if</span> (significantBits % <span class="number">5</span> == <span class="number">0</span>) {
+            <span class="keyword">return</span> String.format(<span class="string">"bits: %s"</span>, Long.toBinaryString(bits));
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> String.format(<span class="string">"bits: %s"</span>, Long.toBinaryString(bits));
+        }
+    }
+}
+``` 
+
+支持坐标转换成GeoHash与Long型值反转回坐标，转换会有误差，误差分米级能够接受。
+</code></pre><ol>
 <li><p>估算搜索范围起始值。</p>
 <ul>
 <li>12bit精度为：9775.7m， 11bit精度为：19551.5m ……</li>
 <li>算法, 如果用52位来表示一个坐标, 那么总共有: 2^26 * 2^26 = 2^52 个框:<ul>
 <li>地球半径：radius = 6372797.560856m</li>
-<li>每个框的夹角：angle = 1 / 2^26</li>
+<li>每个框的夹角：angle = 1 / 2^26 (2的26次方)</li>
 <li>每个框在地球表面的长度: length = 2 <em> π </em> radius * angle</li>
 </ul>
 </li>
