@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        7
+        8
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -135,6 +135,94 @@ var _hmt = _hmt || [];
   </div>
 </aside>
       <section id="main">
+      <article id="post-小小单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/07/小小单例模式/">小小单例模式</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2015/07/07/小小单例模式/">
+    <time datetime="2015-07-07T13:40:29.000Z" itemprop="datePublished">2015年07月7日</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/singleton-pattern.png" alt="单例模式"></p>
+<p><strong>你熟悉这段代码吗：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> X instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">X</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> X <span class="title">instance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">      instance = <span class="keyword">new</span> X();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// more methods...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>当然。这是GOF这本书里面提到的单例模式。但是我总是听到别人说我们不应该使用它。</em></p>
+<p><strong>为什么我们不应该使用它？</strong></p>
+<p><em>因为它使得我们的系统难以测试</em></p>
+<p><strong>真的吗？为什么会那样呢？</strong></p>
+<p><em>因为你不能模拟(mock)一个单例对象。</em></p>
+<p><strong>不能吗？为什么不能？</strong></p>
+<p><em>这样说吧，因为唯一能够访问私有变量的类只有单例对象自身，不暴露给外部就没办法模拟(mock)。</em></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/07/07/小小单例模式/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+
+    
+    <footer class="article-footer">
+      <!-- 原分享代码 
+      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="cighmgarx000l5nyz179jljcf" class="article-share-link">分享到</a>
+      -->
+      <!-- 百度分享 -->
+      <div class="bdsharebuttonbox article-baidu-share-link">
+          <a href="#" class="bds_more" data-cmd="more">分享到</a>
+      </div>
+      <script>
+          window._bd_share_config = {
+              "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "16"
+              },
+              "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      </script>
+      <!-- 百度分享结束 -->
+      
+        <!-- 评论
+        <a href="http://wenhao.github.io/2015/07/07/小小单例模式/#ds-thread" class="article-comment-link">评论</a>
+        -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
       <article id="post-微服务利弊权衡" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,14 +256,14 @@ var _hmt = _hmt || [];
       
         <p><img src="/img/microservice.png" alt="微服务架构"></p>
 <p>现在许多开发团队已经意识到<a href="http://martinfowler.com/articles/microservices.html">微服务架构模式</a>会是解决大型单体应用架构所带来的问题的首选解决方案，但是某些团队也反应微服务架构会在某种程度上降低整个开发团队的开发效率。与任何其他架构模式一样，微服务架构也有其利弊之处，结合你特定的应用场景理解这些利弊之处能够帮助你做出更加明智的选择。</p>
-<h4 id="微服务提供的好处…">微服务提供的好处…</h4><ul>
+<h4 id="微服务带来的好处…">微服务带来的好处…</h4><ul>
 <li><a href="./#高度的模块边界化">高度的模块边界化</a>：微服务促进系统模块化，对大型团队尤其重要。</li>
 <li><a href="./#独立部署">独立部署</a>：简单的服务部署更为容易因为它的依赖更少，并且服务是相对独立的，而且当某个服务出错时不太可能引起整个应用程序系统崩溃。</li>
 <li><a href="./#技术多样性">技术多样性</a>：使用微服务你可以混用多种开发语言，开发框架和数据存储技术。</li>
 </ul>
 <h4 id="微服务引入的成本…">微服务引入的成本…</h4><ul>
-<li><a href="./#分布式">分布式</a>：分布式系统开发难度大，因为远程调用速度慢且出错风险极高。</li>
-<li><a href="./#最终一致性">最终一致性</a>：在分布式系统中管理强一致性问题更加困难，这意味着每个服务都必须关注系统的最终一致性问题。</li>
+<li><a href="./#分布式">分布式</a>：由于远程调用速度慢且出错风险极高，分布式系统开发难度极大。</li>
+<li><a href="./#最终一致性">最终一致性</a>：在分布式系统中维护数据一致性极其困难，它意味着每个服务都必须关注并处理的最终一致性问题。</li>
 <li><a href="./#运维复杂性">运维复杂性</a>：你需要一个较为成熟的维护团队来管理诸多的微服务，处理日常的微服务更新及频繁部署等问题。</li>
 </ul>
         
@@ -322,6 +410,23 @@ var _hmt = _hmt || [];
           <li>
             
             <div class="item-thumbnail">
+              <a href="/2015/11/09/不要从单体应用开始/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/翻译/">翻译</a></p>
+              <p class="item-title"><a href="/2015/11/09/不要从单体应用开始/" class="title">不要从单体应用开始</a></p>
+              <p class="item-date"><time datetime="2015-11-09T14:18:15.000Z" itemprop="datePublished">2015年11月9日</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
               <a href="/2015/11/02/REST-API版本控制/" class="thumbnail">
   
     <span style="background-image:url(/img/rest-api.png
@@ -390,24 +495,6 @@ var _hmt = _hmt || [];
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/07/07/小小单例模式/" class="thumbnail">
-  
-    <span style="background-image:url(/img/singleton-pattern.png
-)" alt="小小单例模式" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/设计模式/">设计模式</a></p>
-              <p class="item-title"><a href="/2015/07/07/小小单例模式/" class="title">小小单例模式</a></p>
-              <p class="item-date"><time datetime="2015-07-07T13:40:29.000Z" itemprop="datePublished">2015年07月7日</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -417,7 +504,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -426,7 +513,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -435,7 +522,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 10px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 20px;">Robert C. Martin</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 20px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 20px;">Robert C. Martin</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 20px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -444,7 +531,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
