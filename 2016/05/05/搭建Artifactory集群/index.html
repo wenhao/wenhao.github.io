@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>源代码</title>
+  <title>搭建Artifactory集群 | 源代码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="源代码">
-<meta property="og:url" content="http://wenhao.github.io/index.html">
+  <meta name="description" content="搭建Artifactory集群在阿里云上搭建Artifactory集群。
+Artifactory许可证官方正版license，3个 License 25900美元(16.7万人民币)一年，贵的离谱。本文以实验学习为主使用最新破解版4.7.4，破解也非常容易就不赘述了。商业用途，请使用正版。
+所需硬件Artifactory集群需要以下硬件设备：
+
+支持粘性会话的均衡负载(HAProxy/Nginx等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建Artifactory集群">
+<meta property="og:url" content="http://wenhao.github.io/2016/05/05/搭建Artifactory集群/index.html">
 <meta property="og:site_name" content="源代码">
-<meta property="og:description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
+<meta property="og:description" content="搭建Artifactory集群在阿里云上搭建Artifactory集群。
+Artifactory许可证官方正版license，3个 License 25900美元(16.7万人民币)一年，贵的离谱。本文以实验学习为主使用最新破解版4.7.4，破解也非常容易就不赘述了。商业用途，请使用正版。
+所需硬件Artifactory集群需要以下硬件设备：
+
+支持粘性会话的均衡负载(HAProxy/Nginx等">
+<meta property="og:updated_time" content="2016-05-05T14:52:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="源代码">
-<meta name="twitter:description" content="关注企业软件设计的方法及最佳实践，诸如敏捷、持续交付、重构、大数据及微服务等。">
+<meta name="twitter:title" content="搭建Artifactory集群">
+<meta name="twitter:description" content="搭建Artifactory集群在阿里云上搭建Artifactory集群。
+Artifactory许可证官方正版license，3个 License 25900美元(16.7万人民币)一年，贵的离谱。本文以实验学习为主使用最新破解版4.7.4，破解也非常容易就不赘述了。商业用途，请使用正版。
+所需硬件Artifactory集群需要以下硬件设备：
+
+支持粘性会话的均衡负载(HAProxy/Nginx等">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -134,8 +147,7 @@ var _hmt = _hmt || [];
     
   </div>
 </aside>
-      <section id="main">
-      <article id="post-搭建Artifactory集群" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-搭建Artifactory集群" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -143,8 +155,8 @@ var _hmt = _hmt || [];
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/05/搭建Artifactory集群/">搭建Artifactory集群</a>
+    <h1 class="article-title" itemprop="name">
+      搭建Artifactory集群
     </h1>
   
 
@@ -280,6 +292,13 @@ var _hmt = _hmt || [];
     </div>
 
     
+      <div id="article-toc">
+	<div id="article-toc-title">文章目录<div>←</div></div>
+	<div id="article-toc-content">
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建Artifactory集群"><span class="toc-number">1.</span> <span class="toc-text">搭建Artifactory集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Artifactory许可证"><span class="toc-number">1.1.</span> <span class="toc-text">Artifactory许可证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所需硬件"><span class="toc-number">1.2.</span> <span class="toc-text">所需硬件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络"><span class="toc-number">1.3.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器"><span class="toc-number">1.4.</span> <span class="toc-text">服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Artifactory节点配置"><span class="toc-number">1.5.</span> <span class="toc-text">Artifactory节点配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFS配置"><span class="toc-number">1.6.</span> <span class="toc-text">NFS配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置artifactory-master"><span class="toc-number">1.7.</span> <span class="toc-text">配置artifactory-master</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置artifactory-slave"><span class="toc-number">1.8.</span> <span class="toc-text">配置artifactory-slave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Nginx负载均衡"><span class="toc-number">1.9.</span> <span class="toc-text">安装Nginx负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动"><span class="toc-number">1.10.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库之间复制"><span class="toc-number">1.11.</span> <span class="toc-text">仓库之间复制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Push方式"><span class="toc-number">1.11.1.</span> <span class="toc-text">Push方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pull方式"><span class="toc-number">1.11.2.</span> <span class="toc-text">Pull方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JFrog_Mission_Control"><span class="toc-number">1.12.</span> <span class="toc-text">安装JFrog Mission Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Jenkins"><span class="toc-number">1.13.</span> <span class="toc-text">安装Jenkins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Packer"><span class="toc-number">1.14.</span> <span class="toc-text">安装Packer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装docker"><span class="toc-number">1.15.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Artifactory的docker_repository"><span class="toc-number">1.16.</span> <span class="toc-text">设置Artifactory的docker repository</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生成ssl"><span class="toc-number">1.16.1.</span> <span class="toc-text">生成ssl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Nginx"><span class="toc-number">1.16.2.</span> <span class="toc-text">配置Nginx</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Artifactory集群性能优化"><span class="toc-number">1.17.</span> <span class="toc-text">Artifactory集群性能优化</span></a></li></ol></li></ol>
+	</div>
+</div>
+    
     <footer class="article-footer">
       <!-- 原分享代码 
       <a data-url="http://wenhao.github.io/2016/05/05/搭建Artifactory集群/" data-id="cinuexp5c0008mvt55t5ho3yg" class="article-share-link">分享到</a>
@@ -314,356 +333,26 @@ var _hmt = _hmt || [];
     </footer>
   </div>
   
-</article>
-
-
     
-      <article id="post-不要从单体应用开始" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/09/不要从单体应用开始/">不要从单体应用开始</a>
-    </h1>
   
+    <a href="/2015/11/09/不要从单体应用开始/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">不要从单体应用开始</div>
+    </a>
+  
+</nav>
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/11/09/不要从单体应用开始/">
-    <time datetime="2015-11-09T14:18:15.000Z" itemprop="datePublished">2015年11月9日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Don’t start with a monolith</p>
-<p>… when your goal is a microservices architecture</p>
-<p>如果你的目标是微服务，就不要从单体应用开始。</p>
-<p>In the last few months, I’ve heard repeatedly that the only way to get to a successful microservices architecture is by starting with a monolith first. To paraphrase Simon Brown: If you can’t build a well-structured monolith, what makes you think you can build a well-structured set of microservices? The most recent – and, as usual, very convincing – rendering of this argument comes from Martin Fowler on this very site. As I had a chance to comment on an earlier draft, I had some time to think about this. And I did, especially because I usually find myself in agreement with him, and some others whose views I typically share seemed to agree with him, too.</p>
-<p>最近几个月里，我多次听说要成功架构微服务的唯一方法是从单体应用开始。用Simon Brown的话说：如果你不能构建一个架构清晰的单体应用，你怎么能相信你能构建一个架构清晰的微服务呢？最近在Martin Fowler的个人网站上对此话题也有所讨论。</p>
-<p>I’m firmly convinced that starting with a monolith is usually exactly the wrong thing to do.</p>
-<p>Starting to build a new system is exactly the time when you should be thinking about carving it up into pieces. I strongly disagree with the idea that you can postpone this, as expressed by Sam Newman, again someone I agree with 95% of the time:</p>
-<p>I remain convinced that it is much easier to partition an existing, “brownfield” system than to do so up front with a new, greenfield system. You have more to work with. You have code you can examine, you can speak to people who use and maintain the system. You also know what ‘good’ looks like - you have a working system to change, making it easier for you to know when you may have got something wrong or been too aggressive in your decision making process.</p>
-<p>— Sam Newman</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/11/09/不要从单体应用开始/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/11/09/不要从单体应用开始/" data-id="cinuexp6j001amvt5rm4lgobz" class="article-share-link">分享到</a>
-      -->
-      <!-- 百度分享 -->
-      <div class="bdsharebuttonbox article-baidu-share-link">
-          <a href="#" class="bds_more" data-cmd="more">分享到</a>
-      </div>
-      <script>
-          window._bd_share_config = {
-              "common": {
-                  "bdSnsKey": {},
-                  "bdText": "",
-                  "bdMini": "2",
-                  "bdPic": "",
-                  "bdStyle": "0",
-                  "bdSize": "16"
-              },
-              "share": {}
-          };
-          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-      </script>
-      <!-- 百度分享结束 -->
-      
-        <!-- 评论
-        <a href="http://wenhao.github.io/2015/11/09/不要从单体应用开始/#ds-thread" class="article-comment-link">评论</a>
-        -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-    
-      <article id="post-REST-API版本控制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/02/REST-API版本控制/">REST API版本控制</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/11/02/REST-API版本控制/">
-    <time datetime="2015-11-02T07:21:59.000Z" itemprop="datePublished">2015年11月2日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/restful/">restful</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/rest-api.png" alt="Rest API 版本控制"></p>
-<p>API版本控制多用在产品发布之后需要根据新需求对部分API做出相应的调整，是在系统维护过程中比较困难但势在必行的任务。不管采用何种版本控制策略，引入新的API版本都会带来一定量的维护成本。最好的API版本化，就是没有明显的版本。在对已发布的服务进行变更时，要尽量做到兼容，其中包括URI、链接和各种不同的表述的兼容，最关键的就是在扩展时不能破坏现有的客户端。</p>
-<h3 id="API修改场景">API修改场景</h3><ol>
-<li><strong>[向后兼容]</strong>如果只是增加内容，那么放心地将它们增加到表示即可。因为客户端将忽略那些它们并不理解的东西。<strong>成本较低，只需要修改服务端。</strong></li>
-<li><strong>[向前兼容]</strong>如果需要修改当前契约造成不兼容，那么使用新的API版本。<strong>成本较高，服务端和客户端都需要修改，并且API每个版本都需要维护。</strong></li>
-<li><strong>[新API需求]</strong>如果要对表示做出重大改变，或是改变底层资源的含义，那么使用新名字（URI）创建一份新的资源。服务端和客户都都需要修改，但是不会有兼容性问题。</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2015/11/02/REST-API版本控制/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/11/02/REST-API版本控制/" data-id="cinuexp6m001jmvt52j1c4hks" class="article-share-link">分享到</a>
-      -->
-      <!-- 百度分享 -->
-      <div class="bdsharebuttonbox article-baidu-share-link">
-          <a href="#" class="bds_more" data-cmd="more">分享到</a>
-      </div>
-      <script>
-          window._bd_share_config = {
-              "common": {
-                  "bdSnsKey": {},
-                  "bdText": "",
-                  "bdMini": "2",
-                  "bdPic": "",
-                  "bdStyle": "0",
-                  "bdSize": "16"
-              },
-              "share": {}
-          };
-          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-      </script>
-      <!-- 百度分享结束 -->
-      
-        <!-- 评论
-        <a href="http://wenhao.github.io/2015/11/02/REST-API版本控制/#ds-thread" class="article-comment-link">评论</a>
-        -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API版本控制/">API版本控制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/restful/">restful</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-基于GeoHash+Redis实现LBS附近地点搜索" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">基于GeoHash+Redis实现LBS附近地点搜索</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">
-    <time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/geohash/">geohash</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/geohash.png" alt="GeoHash"></p>
-<h3 id="需求">需求</h3><p>随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。</p>
-<p>先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。</p>
-<h3 id="解决方案">解决方案</h3><ol>
-<li>物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。</li>
-<li>基于MySQL，可选择物理计算/GeoHash/MySQL空间索引。</li>
-<li>基于MongoDB，依赖MongoDB的空间搜索算法搜索。</li>
-<li>自行开发搜索算法并存入Redis。</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" data-id="cinuexp6f000ymvt5dik2h9us" class="article-share-link">分享到</a>
-      -->
-      <!-- 百度分享 -->
-      <div class="bdsharebuttonbox article-baidu-share-link">
-          <a href="#" class="bds_more" data-cmd="more">分享到</a>
-      </div>
-      <script>
-          window._bd_share_config = {
-              "common": {
-                  "bdSnsKey": {},
-                  "bdText": "",
-                  "bdMini": "2",
-                  "bdPic": "",
-                  "bdStyle": "0",
-                  "bdSize": "16"
-              },
-              "share": {}
-          };
-          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-      </script>
-      <!-- 百度分享结束 -->
-      
-        <!-- 评论
-        <a href="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/#ds-thread" class="article-comment-link">评论</a>
-        -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geohash/">geohash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lbs/">lbs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-spring和kafka集成" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/02/spring和kafka集成/">spring和kafka集成</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/10/02/spring和kafka集成/">
-    <time datetime="2015-10-02T02:27:35.000Z" itemprop="datePublished">2015年10月2日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/kafka/">kafka</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/kafka-logo.png" alt="kafka"></p>
-<h3 id="创建项目">创建项目</h3><ul>
-<li>创建项目文件夹spring-kafka</li>
-<li>生成项目结构<code>gradle init --type java-library</code></li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/02/spring和kafka集成/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/10/02/spring和kafka集成/" data-id="cinuexp6l001emvt5w0hcqy7y" class="article-share-link">分享到</a>
-      -->
-      <!-- 百度分享 -->
-      <div class="bdsharebuttonbox article-baidu-share-link">
-          <a href="#" class="bds_more" data-cmd="more">分享到</a>
-      </div>
-      <script>
-          window._bd_share_config = {
-              "common": {
-                  "bdSnsKey": {},
-                  "bdText": "",
-                  "bdMini": "2",
-                  "bdPic": "",
-                  "bdStyle": "0",
-                  "bdSize": "16"
-              },
-              "share": {}
-          };
-          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-      </script>
-      <!-- 百度分享结束 -->
-      
-        <!-- 评论
-        <a href="http://wenhao.github.io/2015/10/02/spring和kafka集成/#ds-thread" class="article-comment-link">评论</a>
-        -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-      <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-      </nav>
-    </section>
+  <section id="comments">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2016/05/05/搭建Artifactory集群/" data-title="搭建Artifactory集群" data-url="http://wenhao.github.io/2016/05/05/搭建Artifactory集群/">
+     </div>
+  </section>
+</section>
       
         <aside id="sidebar">
   
