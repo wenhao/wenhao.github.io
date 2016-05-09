@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://wenhao.github.io/img/binary-repository-trends.png">
 <meta property="og:image" content="http://wenhao.github.io/img/artifactory-architecture.png">
 <meta property="og:image" content="http://wenhao.github.io/img/artifactory-eco-system.png">
-<meta property="og:updated_time" content="2016-05-09T13:13:39.000Z">
+<meta property="og:updated_time" content="2016-05-09T13:16:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Artifactory集群">
 <meta name="twitter:description" content="制品仓库系统有很多，例如Artifactory、Archiva、Sonatype Nexus、Eclipse Package Drone，其中Artifactory拥有很多强大的企业级特性和人性化的用户接口，拥有众多客户群。很多大型的公司都在使用它，通过以下的Google趋势图可以看出，它越来越受青睐。功能对比在此：Binary Repository Manager Feature Matrix">
@@ -180,6 +180,7 @@ var _hmt = _hmt || [];
 <li>NFS共享文件夹。</li>
 <li>数据库(MySQL等)。</li>
 </ol>
+<a id="more"></a>
 <h3 id="搭建架构图">搭建架构图</h3><p><img src="/img/artifactory-architecture.png" alt="Artifactory集群"></p>
 <h3 id="网络">网络</h3><p>集群中所有的节点<strong>最好</strong>处于同一局域网内，节点之间使用固定端口传输数据。</p>
 <h3 id="服务器">服务器</h3><p>本文使用阿里云ECS服务器，申请三台阿里云ECS服务器分别取名artifactory-master,artifactory-slave,artifactory-nfs。</p>
