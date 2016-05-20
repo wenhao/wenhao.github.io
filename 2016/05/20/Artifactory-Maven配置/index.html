@@ -29,6 +29,7 @@ maven-virtual maven虚拟仓库，">
 <meta property="og:image" content="http://wenhao.github.io/img/maven-remote.png">
 <meta property="og:image" content="http://wenhao.github.io/img/maven-snapshot.png">
 <meta property="og:image" content="http://wenhao.github.io/img/maven-virtual.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-virtual-references.png">
 <meta property="og:image" content="http://wenhao.github.io/img/maven-set-me-up.png">
 <meta property="og:image" content="http://wenhao.github.io/img/maven-push-sync.png">
 <meta property="og:image" content="http://wenhao.github.io/img/artifactory-global-config.png">
@@ -36,7 +37,7 @@ maven-virtual maven虚拟仓库，">
 <meta property="og:image" content="http://wenhao.github.io/img/parameterized-trigger-plugin.png">
 <meta property="og:image" content="http://wenhao.github.io/img/artifactory-build-artifacts-plugin.png">
 <meta property="og:image" content="http://wenhao.github.io/img/pipeline.png">
-<meta property="og:updated_time" content="2016-05-20T04:57:01.000Z">
+<meta property="og:updated_time" content="2016-05-20T05:15:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Artifactory Maven配置">
 <meta name="twitter:description" content="配置Maven本地仓库
@@ -235,6 +236,8 @@ var _hmt = _hmt || [];
 <h3 id="虚拟仓库">虚拟仓库</h3><p>使用虚拟仓库(Virtual Repository)的好处是使用者不用关心虚拟仓库后端的具体实现，虚拟的任何修改对于使用者来说都是透明的。使用虚拟仓库默认的搜索顺序为先本地仓库然后远程仓库的缓存最后才是远程仓库。</p>
 <p>所有仓库都应该添加到虚拟仓库里面。</p>
 <p><img src="/img/maven-virtual.png" alt="maven virtual"></p>
+<p>在虚拟仓库高级设置里面有一个非常有用的功能，它适用的场景是：如有某个依赖也同时依赖其他外部仓库的包，那么在它的POM文件里面可能会定义一系列的<code>&lt;repositories&gt;&lt;/repositories&gt;</code>，如果在限制外网访问的工作环境下这样就会导致依赖包下载失败的情况。</p>
+<p><img src="/img/maven-virtual-references.png" alt="maven virtual references"></p>
 <h3 id="配置供developer访问的用户及权限">配置供developer访问的用户及权限</h3><ol>
 <li>添加<code>developer</code>Users。</li>
 <li>添加<code>developer</code>Groups。</li>
@@ -264,7 +267,8 @@ var _hmt = _hmt || [];
 <h3 id="使用拉(PULL)同步">使用拉(PULL)同步</h3><p>场景：对于分布式的开发团队，两个地区的Artifactory集群需要同步某个仓库里面的所有内容。但是这样务必会增加带宽和磁盘的压力。最好的情况还是根据实际情况只同步需要同步的内容。</p>
 <p>拉同步其实就是把另外一个Artifactory的仓库当做本地的远程(Remote)仓库使用。</p>
 <h3 id="Jenkins_Pipeline配置">Jenkins Pipeline配置</h3><h4 id="配置Artifactory_Jenkins插件全局配置">配置Artifactory Jenkins插件全局配置</h4><p><img src="/img/artifactory-global-config.png" alt="artifactory global config"></p>
-<h4 id="配置jenkins_build_job">配置jenkins build job</h4><p><img src="/img/artifactory-plugin-config.png" alt="artifactory plugin config"></p>
+<h4 id="配置jenkins_build_job">配置jenkins build job</h4><p>Artifactory不推荐使用<code>mven deploy</code>的方式上传Artifacts，因为对于一个多模块的Maven项目而言使用<code>mvn deploy</code>即便是构建失败还是会上传已经成功的模块。</p>
+<p><img src="/img/artifactory-plugin-config.png" alt="artifactory plugin config"></p>
 <h4 id="使用Parameterized_trigger_plugin传递参数">使用Parameterized trigger plugin传递参数</h4><p><img src="/img/parameterized-trigger-plugin.png" alt="parameterized trigger plugin"></p>
 <h4 id="设置Artifactory_build_artifacts插件">设置Artifactory build artifacts插件</h4><p><img src="/img/artifactory-build-artifacts-plugin.png" alt="artifactory build artifacts plugin"></p>
 <h4 id="获取下载链接">获取下载链接</h4><p>下载链接会使用已定义的过滤表达式来排序，<code>ARTIFACT_DOWNLOAD_URL_1</code>到<code>ARTIFACT_DOWNLOAD_URL_N</code>。</p>
