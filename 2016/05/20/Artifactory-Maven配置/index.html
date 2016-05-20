@@ -36,7 +36,7 @@ maven-virtual maven虚拟仓库，">
 <meta property="og:image" content="http://wenhao.github.io/img/parameterized-trigger-plugin.png">
 <meta property="og:image" content="http://wenhao.github.io/img/artifactory-build-artifacts-plugin.png">
 <meta property="og:image" content="http://wenhao.github.io/img/pipeline.png">
-<meta property="og:updated_time" content="2016-05-20T04:15:32.000Z">
+<meta property="og:updated_time" content="2016-05-20T04:57:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Artifactory Maven配置">
 <meta name="twitter:description" content="配置Maven本地仓库
@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        10
+        11
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -216,10 +216,10 @@ var _hmt = _hmt || [];
 <li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
 </ol>
 <p><img src="/img/maven-local.png" alt="maven local"></p>
+<a id="more"></a>
 <h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2" target="_blank" rel="external">apache maven repository</a>。</p>
 <p><img src="/img/maven-remote.png" alt="maven remote"></p>
 <h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>
-<a id="more"></a>
 <p>Artifactory支持对Snapshot仓库进行自动清理：</p>
 <ol>
 <li>通过配置Max Unique Snapshots，0为不限制，5代表最多可保存5个同版本的Snapshot Artifact。</li>
@@ -283,7 +283,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/" data-id="ciof7r3z4001qy1yzdb3ipj96" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/" data-id="ciof98rrf001q10yzkmq8b8gj" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -318,6 +318,15 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
+    <a href="/2016/05/20/Artifactory-Docker配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Artifactory Docker配置
+        
+      </div>
+    </a>
+  
   
     <a href="/2016/05/05/搭建Artifactory集群/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
@@ -343,6 +352,24 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/05/20/Artifactory-Docker配置/" class="thumbnail">
+  
+    <span style="background-image:url(/img/docker-local.png
+)" alt="Artifactory Docker配置" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/devops/">devops</a></p>
+              <p class="item-title"><a href="/2016/05/20/Artifactory-Docker配置/" class="title">Artifactory Docker配置</a></p>
+              <p class="item-date"><time datetime="2016-05-20T04:55:01.000Z" itemprop="datePublished">2016年05月20日</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -415,24 +442,6 @@ var _hmt = _hmt || [];
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="thumbnail">
-  
-    <span style="background-image:url(/img/geohash.png
-)" alt="基于GeoHash+Redis实现LBS附近地点搜索" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/geohash/">geohash</a></p>
-              <p class="item-title"><a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="title">基于GeoHash+Redis实现LBS附近地点搜索</a></p>
-              <p class="item-date"><time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -442,7 +451,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -451,7 +460,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/artifactory/">artifactory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/artifactory/">artifactory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -460,7 +469,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 20px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 20px;">Robert C. Martin</a> <a href="/tags/artifactory/" style="font-size: 20px;">artifactory</a> <a href="/tags/devops/" style="font-size: 20px;">devops</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 20px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 15px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/artifactory/" style="font-size: 20px;">artifactory</a> <a href="/tags/devops/" style="font-size: 20px;">devops</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 15px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -469,7 +478,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

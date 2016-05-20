@@ -5,7 +5,7 @@
   <subtitle><![CDATA[敏捷, 持续交付, 微服务, 重构, 大数据, Java]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
-  <updated>2016-05-20T04:15:32.000Z</updated>
+  <updated>2016-05-20T04:56:25.000Z</updated>
   <id>http://wenhao.github.io//</id>
   
   <author>
@@ -16,11 +16,80 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Artifactory Docker配置]]></title>
+    <link href="http://wenhao.github.io/2016/05/20/Artifactory-Docker%E9%85%8D%E7%BD%AE/"/>
+    <id>http://wenhao.github.io/2016/05/20/Artifactory-Docker配置/</id>
+    <published>2016-05-20T04:55:01.000Z</published>
+    <updated>2016-05-20T04:56:25.000Z</updated>
+    <content type="html"><![CDATA[<p>Artifactory支持多个Docker仓库，并且每个Docker仓库都支持Docker Registry API。</p>
+<h3 id="配置Docker本地仓库">配置Docker本地仓库</h3><ol>
+<li><code>docker-dev-local</code> 开发版本仓库V1。</li>
+<li><code>docker-dev-local2</code> 开发版本仓库V2。</li>
+<li><code>docker-prod-local</code> 准发布版本仓库V1。</li>
+<li><code>docker-prod-local2</code> 准发布版本仓库V2。</li>
+<li><code>docker-virtual</code>虚拟仓库统一入口。</li>
+</ol>
+<p><img src="/img/docker-local.png" alt="docker local"></p>
+<a id="more"></a>
+<h3 id="配置Docker代理仓库">配置Docker代理仓库</h3><p><img src="/img/docker-hub.png" alt="docker-puh"></p>
+<h3 id="为Docker配置反向代理">为Docker配置反向代理</h3><p>Docker必须使用SSL，配置Subdomain。使用Subdomain的好处在于不用每加一个Docker仓库就重启一次Nginx服务器。</p>
+<p><img src="/img/docker-reverse-proxy.png" alt="docker reverse proxy"></p>
+<h3 id="使用推(PUSH)同步">使用推(PUSH)同步</h3><p><img src="/img/docker-push-sync.png" alt="docker push sync"></p>
+<p><strong>注意：</strong>由于Docker Client的限制，Artifactory不支持Docker仓库的拉(PULL)同步。</p>
+<h3 id="Jenkins_Docker_Slave配置">Jenkins Docker Slave配置</h3><ol>
+<li>安装docker。</li>
+<li>文件/etc/hosts添加<code>&lt;IP&gt; docker-dev-local2.&lt;IP&gt;</code>。</li>
+<li><p>文件/etc/default/docker添加：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=<span class="string">"-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"</span></span><br><span class="line">DOCKER_OPTS=<span class="string">"<span class="variable">$DOCKER_OPTS</span> --insecure-registry docker-dev-local2.&lt;IP&gt;"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加文件~/.dockercfg内容为(举例)</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">true"<span class="attribute">docker-dev-local2.&lt;IP&gt;</span>" : <span class="value">&#123;</span><br><span class="line">truetrue"<span class="attribute">auth</span>": <span class="value"><span class="string">"YWRtaW46QVAybVlKN1FwdXI3Q2NzZUJxdnpBOEY4SkI5"</span></span>,</span><br><span class="line">truetrue"<span class="attribute">email</span>": <span class="value"><span class="string">"youremail@email.com"</span></span><br><span class="line">true</span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启docker。</p>
+</li>
+</ol>
+<h3 id="Jenkins_Push_Docker镜像">Jenkins Push Docker镜像</h3><p>jenkins构建项目同步Dockerfile打包镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t docker-dev-local2.&lt;IP&gt;/<span class="variable">$NAME</span>:<span class="variable">$VERSION</span> <span class="operator">-f</span> ./dockerFile/Dockerfile。</span><br><span class="line">docker push docker-dev-local2.&lt;IP&gt;/<span class="variable">$NAME</span>:<span class="variable">$VERSION</span></span><br></pre></td></tr></table></figure>
+<h3 id="Pull_Docker镜像">Pull Docker镜像</h3><p>在Dockerfile里面需要下载docker镜像。镜像都来自于<code>docker-virtual</code>，所以/etc/hosts和/etc/default/docker需要相应的配置。</p>
+<ol>
+<li><p>文件/etc/hosts:</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;IP&gt; docker-dev-local2.&lt;IP&gt; docker-virtual.&lt;IP&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件/etc/default/docker:</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=<span class="string">"-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"</span></span><br><span class="line">DOCKER_OPTS=<span class="string">"<span class="variable">$DOCKER_OPTS</span> --insecure-registry docker-dev-local2.&lt;IP&gt;  --insecure-registry docker-virtual.&lt;IP&gt;"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Dockerfile：</p>
+ <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FROM</span> docker-virtual.&lt;IP&gt;/ubuntu:latest</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">CMD</span> <span class="bash"><span class="built_in">echo</span> <span class="string">'Hello Docker'</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Artifactory支持多个Docker仓库，并且每个Docker仓库都支持Docker Registry API。</p>
+<h3 id="配置Docker本地仓库">配置Docker本地仓库</h3><ol>
+<li><code>docker-dev-local</code> 开发版本仓库V1。</li>
+<li><code>docker-dev-local2</code> 开发版本仓库V2。</li>
+<li><code>docker-prod-local</code> 准发布版本仓库V1。</li>
+<li><code>docker-prod-local2</code> 准发布版本仓库V2。</li>
+<li><code>docker-virtual</code>虚拟仓库统一入口。</li>
+</ol>
+<p><img src="/img/docker-local.png" alt="docker local"></p>]]>
+    
+    </summary>
+    
+      <category term="artifactory" scheme="http://wenhao.github.io/tags/artifactory/"/>
+    
+      <category term="devops" scheme="http://wenhao.github.io/tags/devops/"/>
+    
+      <category term="devops" scheme="http://wenhao.github.io/categories/devops/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Artifactory Maven配置]]></title>
     <link href="http://wenhao.github.io/2016/05/20/Artifactory-Maven%E9%85%8D%E7%BD%AE/"/>
     <id>http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/</id>
     <published>2016-05-20T04:13:24.000Z</published>
-    <updated>2016-05-20T04:15:32.000Z</updated>
+    <updated>2016-05-20T04:57:01.000Z</updated>
     <content type="html"><![CDATA[<h3 id="配置Maven本地仓库">配置Maven本地仓库</h3><ol>
 <li><code>maven-snapshot-local</code> 开发版本仓库。</li>
 <li><code>maven-staging-local</code> 预发布版本仓库。</li>
@@ -31,10 +100,10 @@
 <li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
 </ol>
 <p><img src="/img/maven-local.png" alt="maven local"></p>
+<a id="more"></a>
 <h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2" target="_blank" rel="external">apache maven repository</a>。</p>
 <p><img src="/img/maven-remote.png" alt="maven remote"></p>
 <h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>
-<a id="more"></a>
 <p>Artifactory支持对Snapshot仓库进行自动清理：</p>
 <ol>
 <li>通过配置Max Unique Snapshots，0为不限制，5代表最多可保存5个同版本的Snapshot Artifact。</li>
@@ -95,10 +164,7 @@
 <li><code>maven-virtual</code> maven虚拟仓库，maven项目的仓库入口。</li>
 <li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
 </ol>
-<p><img src="/img/maven-local.png" alt="maven local"></p>
-<h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2">apache maven repository</a>。</p>
-<p><img src="/img/maven-remote.png" alt="maven remote"></p>
-<h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>]]>
+<p><img src="/img/maven-local.png" alt="maven local"></p>]]>
     
     </summary>
     

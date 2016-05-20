@@ -103,7 +103,7 @@ var _hmt = _hmt || [];
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        10
+        11
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -138,6 +138,94 @@ var _hmt = _hmt || [];
   </div>
 </aside>
       <section id="main">
+      <article id="post-基于GeoHash+Redis实现LBS附近地点搜索" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">基于GeoHash+Redis实现LBS附近地点搜索</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/">
+    <time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/geohash/">geohash</a>
+  </div>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/geohash.png" alt="GeoHash"></p>
+<h3 id="需求">需求</h3><p>随着移动业务的不断创新，基于位置服务的需求逐渐增多。比如美团搜索附近的美食，嘀嘀打车搜搜附近的司机等。支撑这一业务最主要的就是LBS(基于位置的服务)，特别是嘀嘀打车的业务尤为突出，司机与乘客不断更新的坐标地址，从一大堆无关的坐标地址内找出一定范围内所有的司机，这无疑对服务器承载力带来巨大的挑战。</p>
+<p>先比较一下不同的解决方案。最后讲解一下如何使用52位的GeoHash集成Redis实现此需求。</p>
+<h3 id="解决方案">解决方案</h3><ol>
+<li>物理计算，正对某个中心点，计算所有周边点，再根据搜索范围刷选。</li>
+<li>基于MySQL，可选择物理计算/GeoHash/MySQL空间索引。</li>
+<li>基于MongoDB，依赖MongoDB的空间搜索算法搜索。</li>
+<li>自行开发搜索算法并存入Redis。</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+
+    
+    <footer class="article-footer">
+      <!-- 原分享代码 
+      <a data-url="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" data-id="ciof98rr6000y10yz1fulptdo" class="article-share-link">分享到</a>
+      -->
+      <!-- 百度分享 -->
+      <div class="bdsharebuttonbox article-baidu-share-link">
+          <a href="#" class="bds_more" data-cmd="more">分享到</a>
+      </div>
+      <script>
+          window._bd_share_config = {
+              "common": {
+                  "bdSnsKey": {},
+                  "bdText": "",
+                  "bdMini": "2",
+                  "bdPic": "",
+                  "bdStyle": "0",
+                  "bdSize": "16"
+              },
+              "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      </script>
+      <!-- 百度分享结束 -->
+      
+        <!-- 评论
+        <a href="http://wenhao.github.io/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/#ds-thread" class="article-comment-link">评论</a>
+        -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geohash/">geohash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lbs/">lbs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
       <article id="post-spring和kafka集成" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -186,7 +274,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/10/02/spring和kafka集成/" data-id="ciof7r3yz001ey1yzi3dbhq1c" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/10/02/spring和kafka集成/" data-id="ciof98rrb001e10yzndin8im3" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -276,7 +364,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="ciof7r3yo000fy1yzskl7ncmz" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="ciof98rr0000f10yzlosjsqlw" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -365,7 +453,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="ciof7r3ys000sy1yzjqdult8m" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/07/小小单例模式/" data-id="ciof98rr4000s10yzb5b7qrhx" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -456,7 +544,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="ciof7r3yq000my1yz8o2tjz3r" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2015/07/06/微服务利弊权衡/" data-id="ciof98rr2000m10yzuupjuglx" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -492,90 +580,8 @@ var _hmt = _hmt || [];
 
 
     
-      <article id="post-互联网" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/09/互联网/">互联网+</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/06/09/互联网/">
-    <time datetime="2015-06-09T01:13:41.000Z" itemprop="datePublished">2015年06月9日</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/互联网/">互联网+</a>
-  </div>
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/互联网+.jpg" alt="互联网+"></p>
-<p>&emsp;&emsp;眼下，互联网+持续升温，发展迅猛，加之政府大力扶持，中国经济开始进入技术、模式和产业大变革时期。在“站在这个风口上，猪都能飞起来了”的大背景之下，涌现出了一大批勇于创业积极创新的先进集体和个人。</p>
-<h3 id="宏观政策">宏观政策</h3><p>&emsp;&emsp;当下，经济下行压力巨大，消费、投资和出口已不再是保持中国经济增长可靠的引擎。中国迫切的需要一个新的政策来拉动经济，促进消费及解决日益严峻的就业压力；加之地产行业的持续低迷，资产加速逃离，大量闲置资金急迫需要寻找下一个可靠的“资金池”以缓解经济运行压力。 “大众创业、万众创新”作为经济增长的双引擎之首写入政府工作报告， 以一种”抛开杂念，放手一搏“的精神激励着广大人民勇于创业积极创新的势头，可见政府抓重点调整产业结构的决心。互联网+恰好在各行各业起到了催化剂的作用，必将加速重塑传统行业的进程。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/09/互联网/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-
-    
-    <footer class="article-footer">
-      <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/06/09/互联网/" data-id="ciof7r3yw0015y1yz1hyasroh" class="article-share-link">分享到</a>
-      -->
-      <!-- 百度分享 -->
-      <div class="bdsharebuttonbox article-baidu-share-link">
-          <a href="#" class="bds_more" data-cmd="more">分享到</a>
-      </div>
-      <script>
-          window._bd_share_config = {
-              "common": {
-                  "bdSnsKey": {},
-                  "bdText": "",
-                  "bdMini": "2",
-                  "bdPic": "",
-                  "bdStyle": "0",
-                  "bdSize": "16"
-              },
-              "share": {}
-          };
-          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-      </script>
-      <!-- 百度分享结束 -->
-      
-        <!-- 评论
-        <a href="http://wenhao.github.io/2015/06/09/互联网/#ds-thread" class="article-comment-link">评论</a>
-        -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/互联网/">互联网+</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
       </nav>
     </section>
       
@@ -586,6 +592,24 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/05/20/Artifactory-Docker配置/" class="thumbnail">
+  
+    <span style="background-image:url(/img/docker-local.png
+)" alt="Artifactory Docker配置" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/devops/">devops</a></p>
+              <p class="item-title"><a href="/2016/05/20/Artifactory-Docker配置/" class="title">Artifactory Docker配置</a></p>
+              <p class="item-date"><time datetime="2016-05-20T04:55:01.000Z" itemprop="datePublished">2016年05月20日</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -658,24 +682,6 @@ var _hmt = _hmt || [];
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="thumbnail">
-  
-    <span style="background-image:url(/img/geohash.png
-)" alt="基于GeoHash+Redis实现LBS附近地点搜索" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/geohash/">geohash</a></p>
-              <p class="item-title"><a href="/2015/10/21/基于GeoHash+Redis实现LBS附近地点搜索/" class="title">基于GeoHash+Redis实现LBS附近地点搜索</a></p>
-              <p class="item-date"><time datetime="2015-10-21T07:55:27.000Z" itemprop="datePublished">2015年10月21日</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -685,7 +691,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/geohash/">geohash</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kafka/">kafka</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/restful/">restful</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网+</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -694,7 +700,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/artifactory/">artifactory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API版本控制/">API版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Martin-Fowler/">Martin Fowler</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/artifactory/">artifactory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geohash/">geohash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lbs/">lbs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网+</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -703,7 +709,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 20px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 20px;">Robert C. Martin</a> <a href="/tags/artifactory/" style="font-size: 20px;">artifactory</a> <a href="/tags/devops/" style="font-size: 20px;">devops</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 20px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/API版本控制/" style="font-size: 10px;">API版本控制</a> <a href="/tags/Martin-Fowler/" style="font-size: 15px;">Martin Fowler</a> <a href="/tags/Robert-C-Martin/" style="font-size: 15px;">Robert C. Martin</a> <a href="/tags/artifactory/" style="font-size: 20px;">artifactory</a> <a href="/tags/devops/" style="font-size: 20px;">devops</a> <a href="/tags/geohash/" style="font-size: 10px;">geohash</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lbs/" style="font-size: 10px;">lbs</a> <a href="/tags/restful/" style="font-size: 10px;">restful</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网+</a> <a href="/tags/微服务/" style="font-size: 15px;">微服务</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -712,7 +718,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
