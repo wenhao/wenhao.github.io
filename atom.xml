@@ -5,7 +5,7 @@
   <subtitle><![CDATA[敏捷, 持续交付, 微服务, 重构, 大数据, Java]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wenhao.github.io//"/>
-  <updated>2016-05-09T13:16:10.000Z</updated>
+  <updated>2016-05-20T04:15:32.000Z</updated>
   <id>http://wenhao.github.io//</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Artifactory Maven配置]]></title>
+    <link href="http://wenhao.github.io/2016/05/20/Artifactory-Maven%E9%85%8D%E7%BD%AE/"/>
+    <id>http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/</id>
+    <published>2016-05-20T04:13:24.000Z</published>
+    <updated>2016-05-20T04:15:32.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="配置Maven本地仓库">配置Maven本地仓库</h3><ol>
+<li><code>maven-snapshot-local</code> 开发版本仓库。</li>
+<li><code>maven-staging-local</code> 预发布版本仓库。</li>
+<li><code>maven-release-local</code> 准发布版本仓库。</li>
+<li><code>maven-plugins-snapshot-local</code> 插件开发版本仓库。</li>
+<li><code>maven-plugins-release-local</code> 插件发布版本仓库。</li>
+<li><code>maven-virtual</code> maven虚拟仓库，maven项目的仓库入口。</li>
+<li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
+</ol>
+<p><img src="/img/maven-local.png" alt="maven local"></p>
+<h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2" target="_blank" rel="external">apache maven repository</a>。</p>
+<p><img src="/img/maven-remote.png" alt="maven remote"></p>
+<h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>
+<a id="more"></a>
+<p>Artifactory支持对Snapshot仓库进行自动清理：</p>
+<ol>
+<li>通过配置Max Unique Snapshots，0为不限制，5代表最多可保存5个同版本的Snapshot Artifact。</li>
+<li>Maven Snapshot Version Behavior，选择Unique,Maven3也强制使用这个。</li>
+<li>Suppress POM Consistency Checks， 强制限制每个Artifact的唯一性。</li>
+<li><p>Include / Exclude Patterns，为了避免上传其他不应当Maven仓库管理的内容通常可以加一些包含模式，对于Maven仓库可以是：<code>**/*.jar</code>和<code>**/*.pom</code>。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意: 如果上传错误的类型到<span class="tag">maven</span>类型的仓库，<span class="tag">Artifactory</span>不会索引此<span class="tag">artifact</span>也不会更新它的元数据(metadata)，如同一般类型的仓库一样(General Repository)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Handle Snapshots只允许存Snapshot，相对maven release仓库推荐只选择Handle Releases。</p>
+</li>
+</ol>
+<p><img src="/img/maven-snapshot.png" alt="maven snapshot"></p>
+<h3 id="虚拟仓库">虚拟仓库</h3><p>使用虚拟仓库(Virtual Repository)的好处是使用者不用关心虚拟仓库后端的具体实现，虚拟的任何修改对于使用者来说都是透明的。使用虚拟仓库默认的搜索顺序为先本地仓库然后远程仓库的缓存最后才是远程仓库。</p>
+<p>所有仓库都应该添加到虚拟仓库里面。</p>
+<p><img src="/img/maven-virtual.png" alt="maven virtual"></p>
+<h3 id="配置供developer访问的用户及权限">配置供developer访问的用户及权限</h3><ol>
+<li>添加<code>developer</code>Users。</li>
+<li>添加<code>developer</code>Groups。</li>
+<li>添加<code>developer</code>Permissions，能够访问所有artifactory maven仓库，拥有Deploy/Cache，Annotate，Read权限。</li>
+</ol>
+<h3 id="配置Apache_Maven">配置Apache Maven</h3><ol>
+<li>选择maven的某个仓库，点击<code>Set Me Up</code>，复制所有内容到maven设置文件<code>settings.xml</code>。</li>
+</ol>
+<p><img src="/img/maven-set-me-up.png" alt="maven set me up"></p>
+<h3 id="发布流程">发布流程</h3><ol>
+<li>选择jenkins mavenstyle job。</li>
+<li>配置VCS。</li>
+<li>Artifactory 插件 Enable Release Management。</li>
+<li>配置Artifactory 插件。</li>
+<li>build完成之后点击Artifactory Release Staging发布到maven-staging-local。</li>
+<li>当QA完成测试之后，点击Artifactory Promotion从maven-staging-local发布到maven-release-local。</li>
+</ol>
+<h3 id="使用推(PUSH)同步">使用推(PUSH)同步</h3><p>场景：对于分布式的开发团队A和B，两个地区分别大奖了Artifactory集群，A团队的开发依赖于B，所以B上传的Artifacts在A区也要能够同时看到。</p>
+<p>配置本地仓库，在Replications设置：</p>
+<ol>
+<li>添加<code>Cron Expression *</code>这个是定时同步。</li>
+<li>Enable Event Replication，对于Artifact增删改查立即在其他仓库生效，即保证一致性，上传Aritfact能保证多个仓库同时出现。</li>
+<li>Sync Deleted Artifacts，一般不做同步删除。</li>
+<li>Path Prefix，相当于一个简单的过滤器，只同步推某个路径下的。</li>
+</ol>
+<p><img src="/img/maven-push-sync.png" alt="maven push sync"></p>
+<h3 id="使用拉(PULL)同步">使用拉(PULL)同步</h3><p>场景：对于分布式的开发团队，两个地区的Artifactory集群需要同步某个仓库里面的所有内容。但是这样务必会增加带宽和磁盘的压力。最好的情况还是根据实际情况只同步需要同步的内容。</p>
+<p>拉同步其实就是把另外一个Artifactory的仓库当做本地的远程(Remote)仓库使用。</p>
+<h3 id="Jenkins_Pipeline配置">Jenkins Pipeline配置</h3><h4 id="配置Artifactory_Jenkins插件全局配置">配置Artifactory Jenkins插件全局配置</h4><p><img src="/img/artifactory-global-config.png" alt="artifactory global config"></p>
+<h4 id="配置jenkins_build_job">配置jenkins build job</h4><p><img src="/img/artifactory-plugin-config.png" alt="artifactory plugin config"></p>
+<h4 id="使用Parameterized_trigger_plugin传递参数">使用Parameterized trigger plugin传递参数</h4><p><img src="/img/parameterized-trigger-plugin.png" alt="parameterized trigger plugin"></p>
+<h4 id="设置Artifactory_build_artifacts插件">设置Artifactory build artifacts插件</h4><p><img src="/img/artifactory-build-artifacts-plugin.png" alt="artifactory build artifacts plugin"></p>
+<h4 id="获取下载链接">获取下载链接</h4><p>下载链接会使用已定义的过滤表达式来排序，<code>ARTIFACT_DOWNLOAD_URL_1</code>到<code>ARTIFACT_DOWNLOAD_URL_N</code>。</p>
+<h4 id="使用Delivery_Pipeline_插件">使用Delivery Pipeline 插件</h4><p><img src="/img/pipeline.png" alt="pipeline"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="配置Maven本地仓库">配置Maven本地仓库</h3><ol>
+<li><code>maven-snapshot-local</code> 开发版本仓库。</li>
+<li><code>maven-staging-local</code> 预发布版本仓库。</li>
+<li><code>maven-release-local</code> 准发布版本仓库。</li>
+<li><code>maven-plugins-snapshot-local</code> 插件开发版本仓库。</li>
+<li><code>maven-plugins-release-local</code> 插件发布版本仓库。</li>
+<li><code>maven-virtual</code> maven虚拟仓库，maven项目的仓库入口。</li>
+<li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
+</ol>
+<p><img src="/img/maven-local.png" alt="maven local"></p>
+<h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2">apache maven repository</a>。</p>
+<p><img src="/img/maven-remote.png" alt="maven remote"></p>
+<h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>]]>
+    
+    </summary>
+    
+      <category term="artifactory" scheme="http://wenhao.github.io/tags/artifactory/"/>
+    
+      <category term="devops" scheme="http://wenhao.github.io/tags/devops/"/>
+    
+      <category term="devops" scheme="http://wenhao.github.io/categories/devops/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[搭建Artifactory集群]]></title>

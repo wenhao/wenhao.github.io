@@ -3,50 +3,49 @@
 <head>
   <meta charset="utf-8">
   
-  <title>接口无益 | 源代码</title>
+  <title>Artifactory Maven配置 | 源代码</title>
   <meta name="google-site-verification" content="L7cNt2_aJoaEPcMgfBInN5d_XUuOW5DCDZBGzYp7rbE" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="baidu-site-verification" content="gvGfP4Z8md" />
-  <meta name="description" content="你认为接口怎么样？
-你的意识是Java或者C#的interface
-是的，接口是一个好的语言特性吗？
-当然，接口很好用！
-真的吗，呃。接口是什么？一个类吗？
-不是，和类不一样。
-怎么说？
-接口没有方法实现。
-这是一个接口吗？
-123public abstract class MyInterface &amp;#123;  public abstract void f();&amp;#125;
-这不是，这是一个抽象">
+  <meta name="description" content="配置Maven本地仓库
+maven-snapshot-local 开发版本仓库。
+maven-staging-local 预发布版本仓库。
+maven-release-local 准发布版本仓库。
+maven-plugins-snapshot-local 插件开发版本仓库。
+maven-plugins-release-local 插件发布版本仓库。
+maven-virtual maven虚拟仓库，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="接口无益">
-<meta property="og:url" content="http://wenhao.github.io/2015/07/09/接口无益/index.html">
+<meta property="og:title" content="Artifactory Maven配置">
+<meta property="og:url" content="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/index.html">
 <meta property="og:site_name" content="源代码">
-<meta property="og:description" content="你认为接口怎么样？
-你的意识是Java或者C#的interface
-是的，接口是一个好的语言特性吗？
-当然，接口很好用！
-真的吗，呃。接口是什么？一个类吗？
-不是，和类不一样。
-怎么说？
-接口没有方法实现。
-这是一个接口吗？
-123public abstract class MyInterface &amp;#123;  public abstract void f();&amp;#125;
-这不是，这是一个抽象">
-<meta property="og:updated_time" content="2015-07-10T01:22:32.000Z">
+<meta property="og:description" content="配置Maven本地仓库
+maven-snapshot-local 开发版本仓库。
+maven-staging-local 预发布版本仓库。
+maven-release-local 准发布版本仓库。
+maven-plugins-snapshot-local 插件开发版本仓库。
+maven-plugins-release-local 插件发布版本仓库。
+maven-virtual maven虚拟仓库，">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-local.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-remote.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-snapshot.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-virtual.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-set-me-up.png">
+<meta property="og:image" content="http://wenhao.github.io/img/maven-push-sync.png">
+<meta property="og:image" content="http://wenhao.github.io/img/artifactory-global-config.png">
+<meta property="og:image" content="http://wenhao.github.io/img/artifactory-plugin-config.png">
+<meta property="og:image" content="http://wenhao.github.io/img/parameterized-trigger-plugin.png">
+<meta property="og:image" content="http://wenhao.github.io/img/artifactory-build-artifacts-plugin.png">
+<meta property="og:image" content="http://wenhao.github.io/img/pipeline.png">
+<meta property="og:updated_time" content="2016-05-20T04:15:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="接口无益">
-<meta name="twitter:description" content="你认为接口怎么样？
-你的意识是Java或者C#的interface
-是的，接口是一个好的语言特性吗？
-当然，接口很好用！
-真的吗，呃。接口是什么？一个类吗？
-不是，和类不一样。
-怎么说？
-接口没有方法实现。
-这是一个接口吗？
-123public abstract class MyInterface &amp;#123;  public abstract void f();&amp;#125;
-这不是，这是一个抽象">
+<meta name="twitter:title" content="Artifactory Maven配置">
+<meta name="twitter:description" content="配置Maven本地仓库
+maven-snapshot-local 开发版本仓库。
+maven-staging-local 预发布版本仓库。
+maven-release-local 准发布版本仓库。
+maven-plugins-snapshot-local 插件开发版本仓库。
+maven-plugins-release-local 插件发布版本仓库。
+maven-virtual maven虚拟仓库，">
   
   
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -168,7 +167,7 @@ var _hmt = _hmt || [];
     
   </div>
 </aside>
-      <section id="main"><article id="post-接口无益" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-Artifactory-Maven配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -177,21 +176,21 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      接口无益
+      Artifactory Maven配置
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/07/09/接口无益/">
-    <time datetime="2015-07-09T09:36:47.000Z" itemprop="datePublished">2015年07月9日</time>
+  <a href="/2016/05/20/Artifactory-Maven配置/">
+    <time datetime="2016-05-20T04:13:24.000Z" itemprop="datePublished">2016年05月20日</time>
   </a>
 </div>
           
   <div class="article-category">
   	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    <a class="article-category-link" href="/categories/devops/">devops</a>
   </div>
 
           
@@ -207,106 +206,69 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
 
-        <p><strong>你认为接口怎么样？</strong></p>
-<p><em>你的意识是Java或者C#的interface</em></p>
-<p><strong>是的，接口是一个好的语言特性吗？</strong></p>
-<p><em>当然，接口很好用！</em></p>
-<p><strong>真的吗，呃。接口是什么？一个类吗？</strong></p>
-<p><em>不是，和类不一样。</em></p>
-<p><strong>怎么说？</strong></p>
-<p><em>接口没有方法实现。</em></p>
-<p><strong>这是一个接口吗？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterface</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>这不是，这是一个抽象类。</em></p>
+        <h3 id="配置Maven本地仓库">配置Maven本地仓库</h3><ol>
+<li><code>maven-snapshot-local</code> 开发版本仓库。</li>
+<li><code>maven-staging-local</code> 预发布版本仓库。</li>
+<li><code>maven-release-local</code> 准发布版本仓库。</li>
+<li><code>maven-plugins-snapshot-local</code> 插件开发版本仓库。</li>
+<li><code>maven-plugins-release-local</code> 插件发布版本仓库。</li>
+<li><code>maven-virtual</code> maven虚拟仓库，maven项目的仓库入口。</li>
+<li><code>maven-plugins-virtual</code> maven插件虚拟仓库，maven插件项目的仓库入口。</li>
+</ol>
+<p><img src="/img/maven-local.png" alt="maven local"></p>
+<h3 id="配置Maven代理仓库">配置Maven代理仓库</h3><p>Artifactory自带的<code>jcenter</code>能够满足大部分Java项目的开发，没有必要再添加其他代理仓库如<a href="https://repo1.maven.org/maven2" target="_blank" rel="external">apache maven repository</a>。</p>
+<p><img src="/img/maven-remote.png" alt="maven remote"></p>
+<h3 id="Maven_Snapshot类型仓库配置">Maven Snapshot类型仓库配置</h3><p>Maven Snapshot仓库是开发人员用得最为频繁的仓库类型，产生的Artifact量也是最大的，占用的磁盘空间同样也是最多的。但是对于Snapshot类型的Artfiact的生命周期反而是最短的，下个Snapshot版本一出来当前的Snapshot基本上就没什么用了。</p>
 <a id="more"></a>
-<p><strong>比起接口，有什么不同？</strong></p>
-<p><em>好吧，抽象类可以有方法实现。</em></p>
-<p><strong>对，但是这个没有，为什么它不是一个接口呢？</strong></p>
-<p><em>好吧，一个抽象类可以包含非静态变量，而接口不能。</em></p>
-<p><strong>对，但是这个也没有。再问，为什么它不是一个接口？</strong></p>
-<p><em>因为它本来就不是。</em></p>
-<p><strong>这不是一个令人满意的答案。如何区分它和接口呢？有什么是可以使用接口但是不能使用抽象类的呢？</strong></p>
-<p><em>类可以继承其他类，但是不能同时实现你的这个抽象类。</em></p>
-<p><strong>为什么不能？</strong></p>
-<p><em>因为，在Java里，你不能同时继承多个类。</em></p>
-<p><strong>为什么不能？</strong></p>
-<p><em>因为Java编译器不允许你这样做。</em></p>
-<p><strong>这太死板了。好吧，为什么不能实现那个抽象类而不是继承它呢？</strong></p>
-<p><em>因为编译器只允许你实现一个抽象接口。</em></p>
-<p><strong>这种规则太奇怪了。</strong></p>
-<p><em>才不是，这很合情合理。编译器允许你实现多个接口但是只能让你继承一个类。</em></p>
-<p><strong>为什么Java编译器允许你实现多个接口，但是不允许你继承多个类呢？</strong></p>
-<p><em>因为类多重继承很危险。</em></p>
-<p><strong>真的吗？怎么回事？</strong></p>
-<p><em>因为多重继承会导致致命方块。</em></p>
-<p><strong>天呐，听起来很可怕。什么是致命方块？</strong></p>
-<p><em>当某个类继承其他两个类，这两个类就同时继承另外一个类。</em></p>
-<p><strong>你的意思是：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D1</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D2</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">M</span> <span class="keyword">extends</span> <span class="title">D1</span>, <span class="title">D2</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><em>对，这很糟糕！</em></p>
-<p><strong>为什么这很糟糕？</strong></p>
-<p><em>因为类B可能有实例变量！</em></p>
-<p><strong>你的意思像这样？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;<span class="keyword">private</span> <span class="keyword">int</span> i;&#125;</span><br></pre></td></tr></table></figure>
-<p><em>对呀！这样的话某个M的实例会有多少个i变量呢？</em></p>
-<p><strong>嗯，我明白了。由于D1和D2都有i变量，又因为M继承与D1和D2，这种情况下你也许期盼着M有两个不同的i变量。</strong></p>
-<p><em>对！但是由于M也间接继承与B，B只有一个i变量，你也许只期望M只包含一个i变量。</em></p>
-<p><strong>嗯，这种继承关系有点模糊不清。</strong></p>
-<p><em>对！</em></p>
-<p><strong>因此Java和C#不能有多重继承是因为可能造成致命方块问题？</strong></p>
-<p><em>不是的，因为每个人都可能造成致命方块问题由于所有的类都是继承与Object类的。</em></p>
-<p><strong>嗯，明白了。编译器作者不会把Object特殊处理吗？</strong></p>
-<p><em>呃…他们不会。</em></p>
-<p><strong>我有点好奇为什么呢？有其他编译器作者解决这个问题吗？</strong></p>
-<p><em>当然有，C++允许你创建致命方块问题。</em></p>
-<p><strong>对，我想Eiffel也可以。</strong></p>
-<p><em>对了，天呐，我想Ruby有解决方法。</em></p>
-<p><strong>是的，使用CLOS(common-lisp object system)—好吧，我们说致命方块问题几十年前就解决了并且不是致命的，也没有导致更坏的结果。</strong></p>
-<p><em>呃。对，我猜你是对的。</em></p>
-<p><strong>让我们回到我原来的问题上。为什么这不是一个接口？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterface</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>因为它使用的关键字是class；而且这门语言也不允许你做多重继承。</em></p>
-<p><strong>对。所以关键字interface的发明是为了避免多重继承。</strong></p>
-<p><em>是的，可能是事实。</em></p>
-<p><strong>为什么Java或者C#的作者不适用已知的解决方案解决多重继承呢？</strong></p>
-<p><em>我不知道。</em></p>
-<p><strong>我也不知道，但是我可以猜。</strong></p>
-<p><em>你猜到了什么？</em></p>
-<p><strong>懒惰。</strong></p>
-<p><em>什么，懒惰？</em></p>
-<p><strong>对，它们根本不想处理这个问题。因此创建了一个新的东西绕过这个问题。这个东西就是interface。</strong></p>
-<p><em>你是说Java的作者创建interface是为了避免一些额外的工作量？</em></p>
-<p><strong>除此之外，我不能解释这个问题。</strong></p>
-<p><em>这有点太过鲁莽。我确信他们的意图肯定不只是这个。不管怎么样，有interface不会是什么坏事吧？我的意思是，它应该也没什么坏处吧？</em></p>
-<p><strong>尝试问你自己这个问题：为什么某个类需要知道它实现某个接口？这种东西是不是应该隐藏起来呢？</strong></p>
-<p><em>你的意思某个派生类应该知道这个并判断使用正确的关键字，extends或者implements，对吗？</em></p>
-<p><strong>对！如果你把class改成接口，有多少派生类需要同时修改？</strong></p>
-<p><em>都得改，至少在Java里面来说。在C#倒是解决了这个问题。</em></p>
-<p><strong>确实是这样。关键字implements和extends确实是多余而且危险的。Java还不如C#和C++使用冒号。</strong></p>
-<p><em>好，好吧，但是究竟什么时候需要使用多重继承呢？</em></p>
-<p><strong>下列情况我会用：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        observers.add(o);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">notify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers)</span><br><span class="line">            o.update();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWidget</span> </span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyObservableWidget</span> <span class="keyword">extends</span> <span class="title">MyWidget</span>, <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>哦，这是观察者模式！</em></p>
-<p><strong>是的，这是观察者模式——完全正确。</strong></p>
-<p><em>但是你不能编译因为你不能继承多个类。</em></p>
-<p><strong>对，这就很悲剧。</strong></p>
-<p><em>悲剧？但是为什么这样说呢？我的意思是你可以让MyWidget继承Subject类！</em></p>
-<p><strong>但是我并不想MyWidget知道任何关于观察者的信息。我想保持其关注点分离。观察者与小部件的关注点分离。</strong></p>
-<p><em>之后只需要在MyObservableWidget类实现register和notify方法。</em></p>
-<p><strong>什么？在每个观察者里面重复这些代码？我不认同这种做法。</strong></p>
-<p><em>在MyObservableWidget里持有Subject的引用把功能代理给Subject。</em></p>
-<p><strong>什么？在每个观察者里面重复这些代理代码？如此愚蠢。如此拙劣。呸。</strong></p>
-<p><em>好吧，你不得不在一个或多个观察者做这事。</em></p>
-<p><strong>我知道。但是我讨厌这样做。</strong></p>
-<p><em>呃，似乎也没办法避免。要么你违反关注点分离原则，要么重复部分代码。</em></p>
-<p><strong>是的。这种情况下语言强迫我不得不这样做。</strong></p>
-<p><em>是的，很不幸。</em></p>
-<p><strong>到底是语言的什么特性导致这种糟糕的局面呢？</strong></p>
-<p><em>关键字interface。</em></p>
-<p><strong>所以说…?</strong></p>
-<p><em>关键字interface没什么好处，接口无益。</em></p>
-<hr>
-<p>翻译自<a href="http://blog.cleancoder.com/uncle-bob/2015/01/08/InterfaceConsideredHarmful.html" target="_blank" rel="external">‘Interface’ Considered Harmful</a></p>
+<p>Artifactory支持对Snapshot仓库进行自动清理：</p>
+<ol>
+<li>通过配置Max Unique Snapshots，0为不限制，5代表最多可保存5个同版本的Snapshot Artifact。</li>
+<li>Maven Snapshot Version Behavior，选择Unique,Maven3也强制使用这个。</li>
+<li>Suppress POM Consistency Checks， 强制限制每个Artifact的唯一性。</li>
+<li><p>Include / Exclude Patterns，为了避免上传其他不应当Maven仓库管理的内容通常可以加一些包含模式，对于Maven仓库可以是：<code>**/*.jar</code>和<code>**/*.pom</code>。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意: 如果上传错误的类型到<span class="tag">maven</span>类型的仓库，<span class="tag">Artifactory</span>不会索引此<span class="tag">artifact</span>也不会更新它的元数据(metadata)，如同一般类型的仓库一样(General Repository)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Handle Snapshots只允许存Snapshot，相对maven release仓库推荐只选择Handle Releases。</p>
+</li>
+</ol>
+<p><img src="/img/maven-snapshot.png" alt="maven snapshot"></p>
+<h3 id="虚拟仓库">虚拟仓库</h3><p>使用虚拟仓库(Virtual Repository)的好处是使用者不用关心虚拟仓库后端的具体实现，虚拟的任何修改对于使用者来说都是透明的。使用虚拟仓库默认的搜索顺序为先本地仓库然后远程仓库的缓存最后才是远程仓库。</p>
+<p>所有仓库都应该添加到虚拟仓库里面。</p>
+<p><img src="/img/maven-virtual.png" alt="maven virtual"></p>
+<h3 id="配置供developer访问的用户及权限">配置供developer访问的用户及权限</h3><ol>
+<li>添加<code>developer</code>Users。</li>
+<li>添加<code>developer</code>Groups。</li>
+<li>添加<code>developer</code>Permissions，能够访问所有artifactory maven仓库，拥有Deploy/Cache，Annotate，Read权限。</li>
+</ol>
+<h3 id="配置Apache_Maven">配置Apache Maven</h3><ol>
+<li>选择maven的某个仓库，点击<code>Set Me Up</code>，复制所有内容到maven设置文件<code>settings.xml</code>。</li>
+</ol>
+<p><img src="/img/maven-set-me-up.png" alt="maven set me up"></p>
+<h3 id="发布流程">发布流程</h3><ol>
+<li>选择jenkins mavenstyle job。</li>
+<li>配置VCS。</li>
+<li>Artifactory 插件 Enable Release Management。</li>
+<li>配置Artifactory 插件。</li>
+<li>build完成之后点击Artifactory Release Staging发布到maven-staging-local。</li>
+<li>当QA完成测试之后，点击Artifactory Promotion从maven-staging-local发布到maven-release-local。</li>
+</ol>
+<h3 id="使用推(PUSH)同步">使用推(PUSH)同步</h3><p>场景：对于分布式的开发团队A和B，两个地区分别大奖了Artifactory集群，A团队的开发依赖于B，所以B上传的Artifacts在A区也要能够同时看到。</p>
+<p>配置本地仓库，在Replications设置：</p>
+<ol>
+<li>添加<code>Cron Expression *</code>这个是定时同步。</li>
+<li>Enable Event Replication，对于Artifact增删改查立即在其他仓库生效，即保证一致性，上传Aritfact能保证多个仓库同时出现。</li>
+<li>Sync Deleted Artifacts，一般不做同步删除。</li>
+<li>Path Prefix，相当于一个简单的过滤器，只同步推某个路径下的。</li>
+</ol>
+<p><img src="/img/maven-push-sync.png" alt="maven push sync"></p>
+<h3 id="使用拉(PULL)同步">使用拉(PULL)同步</h3><p>场景：对于分布式的开发团队，两个地区的Artifactory集群需要同步某个仓库里面的所有内容。但是这样务必会增加带宽和磁盘的压力。最好的情况还是根据实际情况只同步需要同步的内容。</p>
+<p>拉同步其实就是把另外一个Artifactory的仓库当做本地的远程(Remote)仓库使用。</p>
+<h3 id="Jenkins_Pipeline配置">Jenkins Pipeline配置</h3><h4 id="配置Artifactory_Jenkins插件全局配置">配置Artifactory Jenkins插件全局配置</h4><p><img src="/img/artifactory-global-config.png" alt="artifactory global config"></p>
+<h4 id="配置jenkins_build_job">配置jenkins build job</h4><p><img src="/img/artifactory-plugin-config.png" alt="artifactory plugin config"></p>
+<h4 id="使用Parameterized_trigger_plugin传递参数">使用Parameterized trigger plugin传递参数</h4><p><img src="/img/parameterized-trigger-plugin.png" alt="parameterized trigger plugin"></p>
+<h4 id="设置Artifactory_build_artifacts插件">设置Artifactory build artifacts插件</h4><p><img src="/img/artifactory-build-artifacts-plugin.png" alt="artifactory build artifacts plugin"></p>
+<h4 id="获取下载链接">获取下载链接</h4><p>下载链接会使用已定义的过滤表达式来排序，<code>ARTIFACT_DOWNLOAD_URL_1</code>到<code>ARTIFACT_DOWNLOAD_URL_N</code>。</p>
+<h4 id="使用Delivery_Pipeline_插件">使用Delivery Pipeline 插件</h4><p><img src="/img/pipeline.png" alt="pipeline"></p>
 
       
     </div>
@@ -315,13 +277,13 @@ var _hmt = _hmt || [];
       <div id="article-toc">
 	<div id="article-toc-title">文章目录<div>←</div></div>
 	<div id="article-toc-content">
-		
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Maven本地仓库"><span class="toc-number">1.</span> <span class="toc-text">配置Maven本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Maven代理仓库"><span class="toc-number">2.</span> <span class="toc-text">配置Maven代理仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven_Snapshot类型仓库配置"><span class="toc-number">3.</span> <span class="toc-text">Maven Snapshot类型仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟仓库"><span class="toc-number">4.</span> <span class="toc-text">虚拟仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置供developer访问的用户及权限"><span class="toc-number">5.</span> <span class="toc-text">配置供developer访问的用户及权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Apache_Maven"><span class="toc-number">6.</span> <span class="toc-text">配置Apache Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布流程"><span class="toc-number">7.</span> <span class="toc-text">发布流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用推(PUSH)同步"><span class="toc-number">8.</span> <span class="toc-text">使用推(PUSH)同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用拉(PULL)同步"><span class="toc-number">9.</span> <span class="toc-text">使用拉(PULL)同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins_Pipeline配置"><span class="toc-number">10.</span> <span class="toc-text">Jenkins Pipeline配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Artifactory_Jenkins插件全局配置"><span class="toc-number">10.1.</span> <span class="toc-text">配置Artifactory Jenkins插件全局配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置jenkins_build_job"><span class="toc-number">10.2.</span> <span class="toc-text">配置jenkins build job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Parameterized_trigger_plugin传递参数"><span class="toc-number">10.3.</span> <span class="toc-text">使用Parameterized trigger plugin传递参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置Artifactory_build_artifacts插件"><span class="toc-number">10.4.</span> <span class="toc-text">设置Artifactory build artifacts插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取下载链接"><span class="toc-number">10.5.</span> <span class="toc-text">获取下载链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Delivery_Pipeline_插件"><span class="toc-number">10.6.</span> <span class="toc-text">使用Delivery Pipeline 插件</span></a></li></ol></li></ol>
 	</div>
 </div>
     
     <footer class="article-footer">
       <!-- 原分享代码 
-      <a data-url="http://wenhao.github.io/2015/07/09/接口无益/" data-id="ciof7r3yo000fy1yzskl7ncmz" class="article-share-link">分享到</a>
+      <a data-url="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/" data-id="ciof7r3z4001qy1yzdb3ipj96" class="article-share-link">分享到</a>
       -->
       <!-- 百度分享 -->
       <div class="bdsharebuttonbox article-baidu-share-link">
@@ -344,11 +306,11 @@ var _hmt = _hmt || [];
       <!-- 百度分享结束 -->
       
         <!-- 评论
-        <a href="http://wenhao.github.io/2015/07/09/接口无益/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/#ds-thread" class="article-comment-link">评论</a>
         -->
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robert-C-Martin/">Robert C. Martin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/artifactory/">artifactory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li></ul>
 
     </footer>
   </div>
@@ -356,19 +318,10 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/10/02/spring和kafka集成/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          spring和kafka集成
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/07/07/小小单例模式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/05/05/搭建Artifactory集群/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">小小单例模式</div>
+      <div class="article-nav-title">搭建Artifactory集群</div>
     </a>
   
 </nav>
@@ -378,7 +331,7 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2015/07/09/接口无益/" data-title="接口无益" data-url="http://wenhao.github.io/2015/07/09/接口无益/">
+     <div id="ds-thread" class="ds-thread" data-thread-key="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/" data-title="Artifactory Maven配置" data-url="http://wenhao.github.io/2016/05/20/Artifactory-Maven配置/">
      </div>
   </section>
 </section>
